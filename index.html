@@ -308,9 +308,1124 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/04/C语言学习笔记（四）/" itemprop="url">
+                  javaScript拾遗（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-05-04T21:15:44+08:00" content="2018-05-04">
+              2018-05-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>C语言学习笔记（四）<br>1、C错误处理</p>
+<blockquote>
+<p>C 语言不提供对错误处理的直接支持，但是作为一种系统编程语言，它以返回值的形式允许您访问底层数据。在发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个错误代码 errno，该错误代码是全局变量，表示在函数调用期间发生了错误。您可以在 errno.h 头文件中找到各种各样的错误代码。</p>
+</blockquote>
+<blockquote>
+<p>所以，C 程序员可以通过检查返回值，然后根据返回值决定采取哪种适当的动作。开发人员应该在程序初始化时，把 errno 设置为 0，这是一种良好的编程习惯。0 值表示程序中没有错误。</p>
+</blockquote>
+<ul>
+<li>perroe(): 函数显示您传给它的字符串，后跟一个冒号、一个空格和当前 errno 值的文本表示形式。</li>
+<li>strerror() 函数，返回一个指针，指针指向当前 errno 值的文本表示形式。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;errno.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">extern int errno ;//系统宏定义有这个变量</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">   FILE * pf;</span><br><span class="line">   int errnum;</span><br><span class="line">   pf = fopen (&quot;unexist.txt&quot;, &quot;rb&quot;);</span><br><span class="line">   if (pf == NULL)</span><br><span class="line">   &#123;</span><br><span class="line">      errnum = errno;</span><br><span class="line">      fprintf(stderr, &quot;错误号: %d\n&quot;, errno);</span><br><span class="line">      perror(&quot;通过 perror 输出错误&quot;);</span><br><span class="line">      fprintf(stderr, &quot;打开文件错误: %s\n&quot;, strerror( errnum ));//stderr是系统提供的关于错误的文件流</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">      fclose (pf);</span><br><span class="line">   &#125;</span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、递归：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//语法格式</span><br><span class="line">void recursion()</span><br><span class="line">&#123;</span><br><span class="line">   statements;</span><br><span class="line">   ... ... ...</span><br><span class="line">   recursion(); /* 函数调用自身 */</span><br><span class="line">   ... ... ...</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   recursion();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"> </span><br><span class="line">int fibonaci(int i)</span><br><span class="line">&#123;</span><br><span class="line">   if(i == 0)</span><br><span class="line">   &#123;</span><br><span class="line">      return 0;</span><br><span class="line">   &#125;</span><br><span class="line">   if(i == 1)</span><br><span class="line">   &#123;</span><br><span class="line">      return 1;</span><br><span class="line">   &#125;</span><br><span class="line">   return fibonaci(i-1) + fibonaci(i-2);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int  main()</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    for (i = 0; i &lt; 10; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       printf(&quot;%d\t\n&quot;, fibonaci(i));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;//斐波那契数列</span><br></pre></td></tr></table></figure>
+<p>3、可变参数</p>
+<ul>
+<li>引用头文件：stdarg.h</li>
+<li>定义一个函数，最后一个参数为省略号，省略号前面可以设置自定义参数。</li>
+<li>在函数定义中创建一个 va_list 类型变量，该类型是在 stdarg.h 头文件中定义的。</li>
+<li>使用 int 参数和 va_start 宏来初始化 va_list 变量为一个参数列表。宏 va_start 是在 stdarg.h 头文件中定义</li>
+<li>使用 va_arg 宏和 va_list 变量来访问参数列表中的每个项。</li>
+<li>使用宏 va_end 来清理赋予 va_list 变量的内存。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdarg.h&gt;</span><br><span class="line"></span><br><span class="line">double average(int num,...)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    va_list valist;</span><br><span class="line">    double sum = 0.0;</span><br><span class="line">    int i;</span><br><span class="line"></span><br><span class="line">    /* 为 num 个参数初始化 valist */</span><br><span class="line">    va_start(valist, num);</span><br><span class="line"></span><br><span class="line">    /* 访问所有赋给 valist 的参数 */</span><br><span class="line">    for (i = 0; i &lt; num; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       sum += va_arg(valist, int);</span><br><span class="line">    &#125;</span><br><span class="line">    /* 清理为 valist 保留的内存 */</span><br><span class="line">    va_end(valist);</span><br><span class="line"></span><br><span class="line">    return sum/num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   printf(&quot;Average of 2, 3, 4, 5 = %f\n&quot;, average(4, 2,3,4,5));</span><br><span class="line">   printf(&quot;Average of 5, 10, 15 = %f\n&quot;, average(3, 5,10,15));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、内存管理<br>管理内存的函数可以在&lt;stdlib.h&gt;头文件中找到</p>
+<ul>
+<li>void<em> calloc():在内存中动态地分配 num 个长度为 size 的连续空间，并将每一个字节都初始化为 0。所以它的结果是分配了 num</em>size 个字节长度的内存空间，并且每个字节的值都是0</li>
+<li>void free(void *address):该函数释放 address 所指向的内存块,释放的是动态分配的内存空间。</li>
+<li>void malloc(int num):在堆区分配一块指定大小的内存空间，用来存放数据。这块内存空间在函数执行完成后不会被初始化，它们的值是未知的。</li>
+<li>void <em>realloc(void </em>address, int newsize):该函数重新分配内存，把内存扩展到 newsize。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   char name[100];</span><br><span class="line">   char *description;</span><br><span class="line"></span><br><span class="line">   strcpy(name, &quot;Zara Ali&quot;);</span><br><span class="line"></span><br><span class="line">   /* 动态分配内存 */</span><br><span class="line">   description = malloc( 200 * sizeof(char) );</span><br><span class="line">   if( description == NULL )</span><br><span class="line">   &#123;</span><br><span class="line">      fprintf(stderr, &quot;Error - unable to allocate required memory\n&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">      strcpy( description, &quot;Zara ali a DPS student in class 10th&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   printf(&quot;Name = %s\n&quot;, name );</span><br><span class="line">   printf(&quot;Description: %s\n&quot;, description );</span><br><span class="line">&#125;//动态分配内存</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   char name[100];</span><br><span class="line">   char *description;</span><br><span class="line"></span><br><span class="line">   strcpy(name, &quot;Zara Ali&quot;);</span><br><span class="line"></span><br><span class="line">   /* 动态分配内存 */</span><br><span class="line">   description = malloc( 30 * sizeof(char) );</span><br><span class="line">   if( description == NULL )</span><br><span class="line">   &#123;</span><br><span class="line">      fprintf(stderr, &quot;Error - unable to allocate required memory\n&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">      strcpy( description, &quot;Zara ali a DPS student.&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   /* 假设您想要存储更大的描述信息 */</span><br><span class="line">   description = realloc( description, 100 * sizeof(char) );</span><br><span class="line">   if( description == NULL )</span><br><span class="line">   &#123;</span><br><span class="line">      fprintf(stderr, &quot;Error - unable to allocate required memory\n&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">      strcat( description, &quot;She is in class 10th&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   printf(&quot;Name = %s\n&quot;, name );</span><br><span class="line">   printf(&quot;Description: %s\n&quot;, description );</span><br><span class="line"></span><br><span class="line">   /* 使用 free() 函数释放内存 */</span><br><span class="line">   free(description);</span><br><span class="line">&#125;//重新调整内存的大小和释放内存，注意对比和动态分配内存操作进行对比</span><br></pre></td></tr></table></figure>
+<p>5、命令行参数<br><code>int main(int argc, char *argv[])</code></p>
+<ul>
+<li>argc：指传入参数的个数</li>
+<li>argv[]:一个指针数组，指向传递给程序的每个参数。</li>
+<li>argv[0]记录的参数是文件的名称</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/04/C语言学习笔记（三）/" itemprop="url">
+                  javaScript拾遗（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-05-04T19:38:57+08:00" content="2018-05-04">
+              2018-05-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>C语言学习笔记（三）<br>1、预处理器：<br>C预处理器不是编译器的组成部分，但是它是编译过程的一个单独步骤，它就是一个文本的替换工具</p>
+<p>2、常见的预处理符号<br><img src="media/15254353020760.jpg" alt=""></p>
+<p>3、预定义的宏<br><img src="media/15254353566103.jpg" alt=""></p>
+<p>4、预处理器运算符</p>
+<ul>
+<li>字符串常量化运算符<code>#</code></li>
+<li>标记粘贴运算符<code>##</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define  message_for(a, b)  \</span><br><span class="line">    printf(#a &quot; and &quot; #b &quot;: We love you!\n&quot;)//在变量a,b前面添加符号#表示这是个字符串常量</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">   message_for(Carole, Debra);</span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define tokenpaster(n) printf (&quot;token&quot; #n &quot; = %d&quot;, token##n)//在n的前面添加##符号，寓意将token和n联结成一个变量</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">   int token34 = 40;   </span><br><span class="line">   tokenpaster(34);//输出token34 = 40</span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、defined()运算符<br>用来确定一个标识符是否已经使用#defined定义过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#if !defined (MESSAGE)</span><br><span class="line">   #define MESSAGE &quot;You wish!&quot;</span><br><span class="line">#endif</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">   printf(&quot;Here is the message: %s\n&quot;, MESSAGE);  </span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、参数化的宏<br>使用这个功能来模拟函数</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define MAX(x,y) ((x) &gt; (y) ? (x) : (y))</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">   printf(&quot;Max between 20 and 10 is %d\n&quot;, MAX(10, 20));  </span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7、引用C语言头文件</p>
+<ul>
+<li>只引用一次头文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#ifndef HEADER_FILE</span><br><span class="line">#define HEADER_FILE</span><br><span class="line">the entire header file file</span><br><span class="line">#endif</span><br><span class="line">//如果HEADER_FILE已经定义，则不会再次引用文件</span><br></pre></td></tr></table></figure>
+<ul>
+<li>有条件的引用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#if SYSTEM_1</span><br><span class="line">   # include &quot;system_1.h&quot;</span><br><span class="line">#elif SYSTEM_2</span><br><span class="line">   # include &quot;system_2.h&quot;</span><br><span class="line">#elif SYSTEM_3</span><br><span class="line">   ...</span><br><span class="line">#endif</span><br><span class="line">//根据条件的判断结果来进行引用</span><br></pre></td></tr></table></figure>
+<p>8、类型转换</p>
+<ul>
+<li>强制类型转换</li>
+<li>常用的算数类型转换：隐式得把值强制转换为相同的类型，编译器首先会执行整数提升，如果操作数属性类型不同，则按照下列层次中出现的最高层次的类型<br><img src="media/15254384999099.jpg" alt=""></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/03/C语言学习笔记（二）/" itemprop="url">
+                  C 语言学习笔记（二）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-05-03T21:39:01+08:00" content="2018-05-03">
+              2018-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、字符串，字符串实际上是使用null字符’\0’终止的一维字符数组。</p>
+<ul>
+<li>strcpy(s1,s2):复制字符串s2到字符串s1;</li>
+<li>strcat(s1, s2):链接字符串s2到字符串s1的末尾</li>
+<li>strlen(s1):返回字符串s1的长度</li>
+<li>strcmp(s1, s2):s1如果和s2相同则返回0，s1&lt;s2则返回小于零，其他的返回大于零</li>
+<li>strchr(s1,ch):返回一个指针，指向s1中字符第一次出现的位置</li>
+<li>strstr(s1, s2):返回一个指针，指向字符串s1中s2第二次出现的位置。</li>
+</ul>
+<p>2、结构体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct [struct tag] </span><br><span class="line">&#123;</span><br><span class="line">    member definition;</span><br><span class="line">    ...</span><br><span class="line">    member definition;</span><br><span class="line">&#125;[one or more struct variables];</span><br></pre></td></tr></table></figure>
+<p>3、位域</p>
+<blockquote>
+<p>有些信息在存储时，并不需要占用一个完整的字节，而只需占几个或一个二进制位。例如在存放一个开关量时，只有 0 和 1 两种状态，用 1 位二进位即可。为了节省存储空间，并使处理简便，C 语言又提供了一种数据结构，称为”位域”或”位段”。<br>所谓”位域”是把一个字节中的二进位划分为几个不同的区域，并说明每个区域的位数。每个域有一个域名，允许在程序中按域名进行操作。这样就可以把几个不同的对象用一个字节的二进制位域来表示</p>
+</blockquote>
+<p>struct 位域结构名<br>{<br>    位域列表<br>};<br>位域列表的形式为：<br>类型说明符 位域名：位长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct bs&#123;</span><br><span class="line">    int a:8;</span><br><span class="line">    int b:2;</span><br><span class="line">    int c:6;</span><br><span class="line">&#125;data;</span><br></pre></td></tr></table></figure>
+<p>tips:一个位域必须存储在同一个字节当中，所以位域的长度不能超过8位</p>
+<p>4、共用体<br>union [union tag]<br>{<br>    member definition<br>    …<br>    member definition<br>} [one or more union variables];</p>
+<blockquote>
+<p>共用体是一种特殊的数据类型，允许您在相同的内存位置存储不同的数据类型。您可以定义一个带有多成员的共用体，但是任何时候只能有一个成员带有值。共用体提供了一种使用相同的内存位置的有效方式.若同一时刻多个成员同时拥有值，将会出现意想不到的错误</p>
+</blockquote>
+<p>5、typedef关键字：可以使用它来为类型取一个新的名字<br>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">typeof struct Books</span><br><span class="line">&#123;</span><br><span class="line">    char title[50];</span><br><span class="line">    char author[50];</span><br><span class="line">    char subject[100];</span><br><span class="line">    int book_id;</span><br><span class="line">&#125; Book;//将struct Books取个新的名字为Book</span><br><span class="line"></span><br><span class="line">int main( )</span><br><span class="line">&#123;</span><br><span class="line">   Book book;</span><br><span class="line"> </span><br><span class="line">   strcpy( book.title, &quot;C 教程&quot;);</span><br><span class="line">   strcpy( book.author, &quot;Runoob&quot;); </span><br><span class="line">   strcpy( book.subject, &quot;编程语言&quot;);</span><br><span class="line">   book.book_id = 12345;</span><br><span class="line"> </span><br><span class="line">   printf( &quot;书标题 : %s\n&quot;, book.title);</span><br><span class="line">   printf( &quot;书作者 : %s\n&quot;, book.author);</span><br><span class="line">   printf( &quot;书类目 : %s\n&quot;, book.subject);</span><br><span class="line">   printf( &quot;书 ID : %d\n&quot;, book.book_id);</span><br><span class="line"> </span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、输入输出：</p>
+<blockquote>
+<p>当我们谈论输入的时候，意味着要向程序填充一些数据。输入可以是以文件的形式或者从命令行中进行<br>当我们谈论输出的时候，这意味着要在屏幕上、打印机上或任意文件中显示一些数据。</p>
+</blockquote>
+<p>标准文件：C语言把所有的设备都当作文件。所以设备被处理的方式与文件相同。以下的三个文件（设备）会在程序执行的时候自动打开，以便访问键盘和屏幕</p>
+<table>
+<thead>
+<tr>
+<th>标准文件</th>
+<th>文件指针</th>
+<th>设备</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标准输入</td>
+<td>Stdin</td>
+<td>键盘</td>
+</tr>
+<tr>
+<td>标准输出</td>
+<td>stdout</td>
+<td>屏幕</td>
+</tr>
+<tr>
+<td>标准错误</td>
+<td>Stderr</td>
+<td>您的屏幕</td>
+</tr>
+</tbody>
+</table>
+<p>文件指针是访问文件的方式。</p>
+<ul>
+<li>int getchar(void):从屏幕读取下一个可用的字符，并把它返回一个整数</li>
+<li>int putchar(int c)：函数把字符输出到屏幕上，并返回相同的字符，这里的参数 c 是从上一个函数返回来的参数。</li>
+<li>cahr<em> gets(cahr</em> s):函数从stdin读取一行到s所指向的缓冲区，直到一个终止符或者EOF</li>
+<li>int puts(char* s):把字符串s和一个尾随的换行符写入到stdout</li>
+<li>int scanf(const char* format …)</li>
+<li>int printf(const char* format …)</li>
+</ul>
+<p>7、文件读写<br>一个文件，无论它是文本文件还是二进制文件，都是代表了一系列的字节</p>
+<ul>
+<li>FILE<em> fopen(const char</em> filename, const char* mode);//打开文件</li>
+<li>int fclose(FILE* fp);//关闭文件</li>
+<li>int fputc(int c, FILE* fp);//写入文件，把参数c的字符值写入到输出流中</li>
+<li>int fputs(const char<em> s, FILE</em> fp)//把字符串s写入到fp指向的输出流中，输入成功返回一个非负值</li>
+<li>int<em> fgets(char</em> buf, int n, FILE* fp);//从fp指向的输入流中读取n-1个字符，它会把读取到的字符串复制到缓冲区buff，并在最后一个追加null来终止字符串</li>
+<li>int fscanf(FILE<em> fp, const char</em> format, ..);从文件中读取字符串，遇到空格会停止。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt; </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   FILE *fp = NULL;</span><br><span class="line"> </span><br><span class="line">   fp = fopen(&quot;/tmp/test.txt&quot;, &quot;w+&quot;);</span><br><span class="line">   fprintf(fp, &quot;This is testing for fprintf...\n&quot;);</span><br><span class="line">   fputs(&quot;This is testing for fputs...\n&quot;, fp);</span><br><span class="line">   fclose(fp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   FILE *fp = NULL;</span><br><span class="line">   char buff[255];</span><br><span class="line"> </span><br><span class="line">   fp = fopen(&quot;/tmp/test.txt&quot;, &quot;r&quot;);</span><br><span class="line">   fscanf(fp, &quot;%s&quot;, buff);</span><br><span class="line">   printf(&quot;1: %s\n&quot;, buff );</span><br><span class="line"> </span><br><span class="line">   fgets(buff, 255, (FILE*)fp);</span><br><span class="line">   printf(&quot;2: %s\n&quot;, buff );</span><br><span class="line">   </span><br><span class="line">   fgets(buff, 255, (FILE*)fp);</span><br><span class="line">   printf(&quot;3: %s\n&quot;, buff );</span><br><span class="line">   fclose(fp);</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/02/C语言学习笔记（一）/" itemprop="url">
+                  javaScript拾遗（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-05-02T16:28:39+08:00" content="2018-05-02">
+              2018-05-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、C语言数据线类型</p>
+<ul>
+<li>基本类型：是算术类型，包括整数类型和浮点数类型</li>
+<li>枚举类型：也属于算数类型，被用来在程序中只能赋予一定的离散整数值的变量</li>
+<li>void类型：类型说明符，表明没有可用的值</li>
+<li>派生类型：指针类型，数组类型，结构类型，共用体类型和函数类型</li>
+</ul>
+<p>2、C语言中的变量声明</p>
+<ul>
+<li>一种是需要建立存储空间</li>
+<li>另一种是不需要建立存储空间，通过使用extern关键字声明变量而不定义它，例如 extern int a;其中变量a可以在别的文件中定义。</li>
+</ul>
+<p>3、C语言中的左值（lvalue）和 右值（rvalue）</p>
+<ul>
+<li>左值：指向内存位置的表达式称为左值表达式，左值表达式可以出现在赋值号的右边和左边</li>
+<li>右值：存储在内存中某些地址的数值。右值是不能对其进行赋值的表达式。</li>
+</ul>
+<p>4、常量：<br>常量是固定值，在程序执行期间不会改变，有叫做“字面量”</p>
+<p>5、定义常量：</p>
+<ul>
+<li>#define type variable = value;</li>
+<li>const type variable = value;<br>举例：#define char X = “x”; const String X = “hello World”</li>
+</ul>
+<p>6、C存储类:定义C程序中变量和函数的范围（可见性）和声明周期</p>
+<ul>
+<li>auto:是所有局部变量的默认存储类</li>
+<li>register:用于定义存储在存储器中而不是RAM中的局部变量，被该类修饰的变量被访问的速度更加快速</li>
+<li>static：指示编译器在程序的声明周期保持局部变量的存在，而不需要每次它进入或者离开作用域的时候进行销毁和创建，static是全局变量的默认存储类</li>
+<li>extern:提供一个全局变量的引用</li>
+</ul>
+<p>7、数组：type arrayName[arraySize]</p>
+<ul>
+<li>多维数组：type name[size][size]</li>
+<li>将数组作为参数：（ing *param）、（int param[10]）、(int param[])</li>
+<li>从函数中返回数组：C语言不允许返回一个完整的数组作为函数的参数，但是我们可以定义一个返回数组的引用，即返回类型为指针的函数。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int* myFunction() &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>tips:C不支持在函数外返回局部变量的的地址，除非局部变量被修饰为static变量</p>
+<ul>
+<li>指向数组的指针：数组名是一个指向数组中第一个元素的常量指针。</li>
+</ul>
+<p>8、C指针</p>
+<ul>
+<li>每一个变量在内存中都有一个位置，每个位置又都定义了可以使用&amp;符号进行访问的地址，它表示的是内存中的一个地址。</li>
+<li>指针是一个变量，其值为另一个变量的地址，即，内存中的直接位置</li>
+<li>指针的数组：我们想让数组存储指向某种数据类型的指针</li>
+<li>指针的指针：第一个指针包含了第二个指针的地址，第二个指针则指向了包含实际值的位置</li>
+<li>可以将函数的参数设置为指针类型</li>
+</ul>
+<p>9、函数指针：指向函数的指针变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> #include &quot;stdio.h&quot;</span><br><span class="line">int max(int x, int y) &#123;</span><br><span class="line">	return x &gt; y ? x : y;</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, char const *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	//p 是函数指针</span><br><span class="line">	int (* p)(int, int) = &amp;max;</span><br><span class="line">	int a, b, c, d;</span><br><span class="line">	printf(&quot;请输入三个数字：\n&quot;);</span><br><span class="line">	scanf(&quot;%d %d %d&quot;, &amp;a, &amp;b, &amp;c);</span><br><span class="line">	d = p(p(a,b), c);</span><br><span class="line">	printf(&quot;最大的数字是 %d\n&quot;, d);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line">#include &quot;stdlib.h&quot;</span><br><span class="line"></span><br><span class="line">//定义一个函数，参数列表中有函数指针</span><br><span class="line">void populate_array(int* array, size_t arraySize, int (*getNextValue)()) &#123;</span><br><span class="line">	for (size_t i = 0; i &lt; arraySize; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		array[i] = getNextValue();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int getNextRandomValue(void)&#123;</span><br><span class="line">	return rand();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, char const *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	int myarray[10];</span><br><span class="line">	populate_array(myarray, 10, getNextRandomValue);</span><br><span class="line">	for (int i = 0; i &lt; 10; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d\n&quot;, myarray[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/01/ECMAScript学习笔记（一）/" itemprop="url">
+                  javaScript拾遗（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-05-01T10:03:52+08:00" content="2018-05-01">
+              2018-05-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ECMAScript学习笔记"><a href="#ECMAScript学习笔记" class="headerlink" title="ECMAScript学习笔记"></a>ECMAScript学习笔记</h1><p>1、ES中的原始值和引用值：<br>原始值：存在存在栈中，即直接存在变量访问的位置<br>引用值：存储堆中的对象，即存储变量处的是一个指针，该指针指向存储对象的内村处。</p>
+<p>2、原始类型：即 Undefined、Null、Boolean、Number 和 String；与之相对的是引用类型，常见的有对象。</p>
+<p>3、类型转换：<br>转换成字符串：toString()<br>转换成数字：parseInt()、parseFloat()<br>tips:从位置0开始查看每个字符，直到找到第一个非有效的数字为止，然后将前面的有效数字转换成整数</p>
+<p>4、强制类型转换</p>
+<ul>
+<li>Boolean(value):将value转换成布尔类型的值</li>
+<li>Number(value):将value转换成数字</li>
+<li>String(value):将value转换成字符串</li>
+</ul>
+<p>5、String对象<br>创建：var sOtringObject = new String(“hello World”);<br>方法和属性：</p>
+<ul>
+<li>length</li>
+<li>charAt(),charCodeAt();</li>
+<li>concat():调用这个方法后的原始对象值不变</li>
+<li>indexOf()、lastIndexOf()</li>
+<li>localeCompare()</li>
+<li>slice()、substring()</li>
+</ul>
+<p>6、instanceof（）：用于识别正在执行的对象的类型</p>
+<p>7、delete运算符和void运算符<br>前者删除前面定一个的属性或者方法<br>后者对任何的值都是返回undefined</p>
+<p>8、等性运算符：==、！=</p>
+<ul>
+<li>如果符号的两侧是对象，则比较他们的引用值，若只想同一个对象，则返回true<br><img src="media/15251862838988.jpg" alt=""></li>
+</ul>
+<p>8、全等号和非全等号：<code>===</code>、<code>!===</code><br>在比较值前不自动进行类型的转换，所以只有类型和引用值相同的时候才会返回true</p>
+<p>9、for-in语句：<br>用于枚举对象的属性</p>
+<p>10、标签语句:主要是为了可以使后面可以通过调用label来调用语句<br>label:statement</p>
+<p>11、with语句：用户设置代码在特定对象中的作用域</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var sMessage = &quot;hello&quot;;</span><br><span class="line">with(sMessage) &#123;</span><br><span class="line">    alert(toUpperCase());</span><br><span class="line">&#125;//with语句用于字符串，所以在调用toUpperCase（）方法的时候，解释程序会先查找该方法是否为本地的函数，如果不是，它将查找伪对象sMessage,看它是否为该对象的方法。</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/05/01/javaScript拾遗（二）-1/" itemprop="url">
+                  javaScript拾遗(二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-05-01T01:58:42+08:00" content="2018-05-01">
+              2018-05-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>1、创建js对象</p>
+<ul>
+<li>创建直接的实例</li>
+<li>通过函数来创建<figure class="highlight plain"><figcaption><span>person(firstname, lastname, age, eyecolor) &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    this.firstname=firstname;</span><br><span class="line">    this.lastname=lastname;</span><br><span class="line">    this.age=age;</span><br><span class="line">    this.eyecolor=eyecolor;</span><br><span class="line">    function changeName(name) &#123;</span><br><span class="line">        this.lastname = name;</span><br><span class="line">    &#125;</span><br><span class="line">    this.changeName = changeName;//方法也要在函数中声明和赋值</span><br><span class="line">&#125;//函数体</span><br><span class="line">//创建实例：</span><br><span class="line">var myFather = new person(&quot;Bill&quot;, &quot;Gates&quot;, 56, &quot;blue&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/05/01/javaScript拾遗（二）-1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/30/javaScript拾遗(一)-1/" itemprop="url">
+                  javaScript拾遗（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-04-30T16:35:32+08:00" content="2018-04-30">
+              2018-04-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、变量<br>    声明但是没有赋值的变量为：undefined</p>
+<p>2、js的数据类型有：<br>    字符串、数字、布尔、数组、对象、Null、Undefined</p>
+<p>3、创建数组的方式：<br>    <figure class="highlight plain"><figcaption><span>cars </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">car[0] = &quot;Audi&quot;</span><br><span class="line">...</span><br><span class="line">var vars = new Array(&quot;Audi&quot;, &quot;BMW&quot;, &quot;Volvo&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>4、null、undefined<br>    可以通过将变量的值设置为null、undefined达到清空变量的目的。</p>
+<p>5、函数：<br>   ” 是由事件驱动的或者当它被调用的时候执行的可重复使用的代码块“<br>   <figure class="highlight plain"><figcaption><span>functionName() &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">     ....</span><br><span class="line">     return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>6、变量的生存周期：<br>    局部变量：从声明开始，到函数体的结束<br>    全部变量：从声明开始，到页面关闭</p>
+<p>7、运算符号：<br>    <code>==</code>和<code>===</code>的异同：前者只要求值相等，后者要求类型相同，值也要相等。</p>
+<hr>
+<h2 id="HTML-DOM-document-object-model"><a href="#HTML-DOM-document-object-model" class="headerlink" title="HTML DOM:document object model"></a>HTML DOM:document object model</h2><p>当页面被加载的时候dom模型将会被创建</p>
+<blockquote>
+<p>通过可编程的对象模型，js可以创建动态的html</p>
+<ul>
+<li>改变页面中所有HTML元素</li>
+<li>改变页面中所有HTML属性</li>
+<li>改变页面中所有CSS样式</li>
+<li>对页面中所有的事件做出响应</li>
+</ul>
+</blockquote>
+<p>8、改变HTML的内容：innerHTML属性<br><code>document.getElementById(id).innerHTML=newValue;</code></p>
+<p>9、改变HTML元素的属性<br><figure class="highlight plain"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;image&quot;).src=&quot;landscape.jpg&quot;;&lt;/scritp&gt;</span><br></pre></td></tr></table></figure></p>
+<p>10、改变HTML样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">例如：</span><br><span class="line">```document.getElementById(&apos;ps2&apos;).style.color=&quot;red&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>隐藏文本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">显示文本则用visibility=visible;</span><br><span class="line"></span><br><span class="line">[Style对象的属性链接](http://www.w3school.com.cn/jsref/dom_obj_style.asp)</span><br><span class="line"></span><br><span class="line">-----------</span><br><span class="line">### HTML使js有能力对HTML事件做出反应</span><br><span class="line">&gt; onclick 当用户点击时触发事件</span><br><span class="line">&gt; onload/onunload 当用户进入或者离开页面时候触发的事件</span><br><span class="line">&gt; onchange 当内容改变的时候触发事件</span><br><span class="line">&gt; onmouseover/onmouseout 当鼠标移入/移出时候触发事件</span><br><span class="line">&gt; onmousedown/onmouseup 当点击下鼠标，触发onmousedown,放松鼠标，触发onmouseup,触发顺序：onmousedown-&gt;onmouseup-&gt;onclick</span><br><span class="line"></span><br><span class="line">10、通过HTML DOM向HTML元素分配事件</span><br><span class="line">```document.getElementById(&quot;myid&quot;).onclick=function()&#123;displayDate()&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>11、添加节点<br>    首先建一个新元素，然后在新元素中添加型内容（节点），最后再将创建好的元素连同创建好的节点（内容）添加到已经存在的元素中。<br>    <figure class="highlight plain"><figcaption><span>para</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var node=document.createTextNode(&quot;这是新段落。&quot;);//创建节点</span><br><span class="line">para.appendChild(node);//将节点添加到新创建的元素</span><br><span class="line">var element=document.getElementById(&quot;div1&quot;);</span><br><span class="line">element.appendChild(para);</span><br></pre></td></tr></table></figure></p>
+<p>12、删除已经存在的HTML元素：前提是需要知道目标元素的父元素<br><figure class="highlight plain"><figcaption><span>child </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">child.parentNode.removeChild(child);</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.w3school.com.cn/htmldom/index.asp" target="_blank" rel="noopener">DOM教程</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/29/html学习笔记(三)-1/" itemprop="url">
+                  html学习笔记(三)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-04-29T23:51:15+08:00" content="2018-04-29">
+              2018-04-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>input：输入</p>
+<pre><code>- text
+- password
+- submit
+- radio
+- checkbox
+- button
+tips:type=&quot;radio&quot;的input为单选按钮，若是佛那个多个选择中只能选一个，则多个input中必须要有相同的“name”属性值
+checkbox为多选按钮，但也需要多个相同的&quot;name&quot;属性值
+</code></pre><p>select：下拉列表<br><figure class="highlight plain"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    &lt;option value=&quot;Volvo&quot; selected&gt;Volvo&lt;/option&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></p>
+<p>selected值表示默认选中</p>
+<p>textaarea:定义多行文本输入字段<br><figure class="highlight plain"><figcaption><span>name</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">the cat ...</span><br><span class="line">&lt;/textarea&gt;</span><br></pre></td></tr></table></figure></p>
+<p>button：定义可点击的按钮<br><code>&lt;button type=&quot;button&quot; onclick=&quot;alert(&quot;Hello World!&quot;)&quot;&gt; Cick me!&lt;/button&gt;</code><br>附录：输入标签的一些输入限制<br><img src="media/15250182045253.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/29/html学习笔记二/" itemprop="url">
+                  Untitled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-04-29T00:58:14+08:00" content="2018-04-29">
+              2018-04-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="html学习笔记"><a href="#html学习笔记" class="headerlink" title="html学习笔记"></a>html学习笔记<2></2></h3><p>颜色快速参考：<br><img src="http://mrclown.cn/15249347896003.jpg" alt=""></p>
+<p><img src="http://mrclown.cn/15249348424456.jpg" alt=""></p>
+<p><img src="http://mrclown.cn/15249348787840.jpg" alt=""></p>
+<p><a href="http://www.w3school.com.cn/html/html_colornames.asp" target="_blank" rel="noopener">w3school网站颜色速查</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -349,7 +1464,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -359,7 +1474,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

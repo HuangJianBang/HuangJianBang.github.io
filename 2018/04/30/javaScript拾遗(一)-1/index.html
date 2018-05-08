@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="菜鸟," />
+  <meta name="keywords" content="学习笔记,javascript," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="1printf(&amp;quot;Hello World&amp;quot;);">
-<meta name="keywords" content="菜鸟">
+<meta name="description" content="1、变量    声明但是没有赋值的变量为：undefined 2、js的数据类型有：    字符串、数字、布尔、数组、对象、Null、Undefined 3、创建数组的方式：    cars 123car[0] = &amp;quot;Audi&amp;quot;...var vars = new Array(&amp;quot;Audi&amp;quot;, &amp;quot;BMW&amp;quot;, &amp;quot;Volvo&amp;quot;">
+<meta name="keywords" content="学习笔记,javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="世界，你好！">
-<meta property="og:url" content="http://yoursite.com/2018/05/08/the-first-article/index.html">
+<meta property="og:title" content="javaScript拾遗（一）">
+<meta property="og:url" content="http://yoursite.com/2018/04/30/javaScript拾遗(一)-1/index.html">
 <meta property="og:site_name" content="jianbang">
-<meta property="og:description" content="1printf(&amp;quot;Hello World&amp;quot;);">
+<meta property="og:description" content="1、变量    声明但是没有赋值的变量为：undefined 2、js的数据类型有：    字符串、数字、布尔、数组、对象、Null、Undefined 3、创建数组的方式：    cars 123car[0] = &amp;quot;Audi&amp;quot;...var vars = new Array(&amp;quot;Audi&amp;quot;, &amp;quot;BMW&amp;quot;, &amp;quot;Volvo&amp;quot;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-07T18:16:42.935Z">
+<meta property="og:updated_time" content="2018-05-01T17:33:27.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="世界，你好！">
-<meta name="twitter:description" content="1printf(&amp;quot;Hello World&amp;quot;);">
+<meta name="twitter:title" content="javaScript拾遗（一）">
+<meta name="twitter:description" content="1、变量    声明但是没有赋值的变量为：undefined 2、js的数据类型有：    字符串、数字、布尔、数组、对象、Null、Undefined 3、创建数组的方式：    cars 123car[0] = &amp;quot;Audi&amp;quot;...var vars = new Array(&amp;quot;Audi&amp;quot;, &amp;quot;BMW&amp;quot;, &amp;quot;Volvo&amp;quot;">
 
 
 
@@ -113,7 +113,7 @@
   };
 </script>
 
-  <title> 世界，你好！ | jianbang </title>
+  <title> javaScript拾遗（一） | jianbang </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -233,7 +233,7 @@
             
             
               
-                世界，你好！
+                javaScript拾遗（一）
               
             
           </h1>
@@ -245,8 +245,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-05-08T02:15:33+08:00" content="2018-05-08">
-              2018-05-08
+            <time itemprop="dateCreated" datetime="2018-04-30T16:35:32+08:00" content="2018-04-30">
+              2018-04-30
             </time>
           </span>
 
@@ -273,7 +273,31 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;Hello World&quot;);</span><br></pre></td></tr></table></figure>
+        <p>1、变量<br>    声明但是没有赋值的变量为：undefined</p>
+<p>2、js的数据类型有：<br>    字符串、数字、布尔、数组、对象、Null、Undefined</p>
+<p>3、创建数组的方式：<br>    <figure class="highlight plain"><figcaption><span>cars </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">car[0] = &quot;Audi&quot;</span><br><span class="line">...</span><br><span class="line">var vars = new Array(&quot;Audi&quot;, &quot;BMW&quot;, &quot;Volvo&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>4、null、undefined<br>    可以通过将变量的值设置为null、undefined达到清空变量的目的。</p>
+<p>5、函数：<br>   ” 是由事件驱动的或者当它被调用的时候执行的可重复使用的代码块“<br>   <figure class="highlight plain"><figcaption><span>functionName() &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">     ....</span><br><span class="line">     return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>6、变量的生存周期：<br>    局部变量：从声明开始，到函数体的结束<br>    全部变量：从声明开始，到页面关闭</p>
+<p>7、运算符号：<br>    <code>==</code>和<code>===</code>的异同：前者只要求值相等，后者要求类型相同，值也要相等。</p>
+<hr>
+<h2 id="HTML-DOM-document-object-model"><a href="#HTML-DOM-document-object-model" class="headerlink" title="HTML DOM:document object model"></a>HTML DOM:document object model</h2><p>当页面被加载的时候dom模型将会被创建</p>
+<blockquote>
+<p>通过可编程的对象模型，js可以创建动态的html</p>
+<ul>
+<li>改变页面中所有HTML元素</li>
+<li>改变页面中所有HTML属性</li>
+<li>改变页面中所有CSS样式</li>
+<li>对页面中所有的事件做出响应</li>
+</ul>
+</blockquote>
+<p>8、改变HTML的内容：innerHTML属性<br><code>document.getElementById(id).innerHTML=newValue;</code></p>
+<p>9、改变HTML元素的属性<br><figure class="highlight plain"><figcaption><span>id</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;image&quot;).src=&quot;landscape.jpg&quot;;&lt;/scritp&gt;</span><br></pre></td></tr></table></figure></p>
+<p>10、改变HTML样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">例如：</span><br><span class="line">```document.getElementById(&apos;ps2&apos;).style.color=&quot;red&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>隐藏文本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">显示文本则用visibility=visible;</span><br><span class="line"></span><br><span class="line">[Style对象的属性链接](http://www.w3school.com.cn/jsref/dom_obj_style.asp)</span><br><span class="line"></span><br><span class="line">-----------</span><br><span class="line">### HTML使js有能力对HTML事件做出反应</span><br><span class="line">&gt; onclick 当用户点击时触发事件</span><br><span class="line">&gt; onload/onunload 当用户进入或者离开页面时候触发的事件</span><br><span class="line">&gt; onchange 当内容改变的时候触发事件</span><br><span class="line">&gt; onmouseover/onmouseout 当鼠标移入/移出时候触发事件</span><br><span class="line">&gt; onmousedown/onmouseup 当点击下鼠标，触发onmousedown,放松鼠标，触发onmouseup,触发顺序：onmousedown-&gt;onmouseup-&gt;onclick</span><br><span class="line"></span><br><span class="line">10、通过HTML DOM向HTML元素分配事件</span><br><span class="line">```document.getElementById(&quot;myid&quot;).onclick=function()&#123;displayDate()&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>11、添加节点<br>    首先建一个新元素，然后在新元素中添加型内容（节点），最后再将创建好的元素连同创建好的节点（内容）添加到已经存在的元素中。<br>    <figure class="highlight plain"><figcaption><span>para</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var node=document.createTextNode(&quot;这是新段落。&quot;);//创建节点</span><br><span class="line">para.appendChild(node);//将节点添加到新创建的元素</span><br><span class="line">var element=document.getElementById(&quot;div1&quot;);</span><br><span class="line">element.appendChild(para);</span><br></pre></td></tr></table></figure></p>
+<p>12、删除已经存在的HTML元素：前提是需要知道目标元素的父元素<br><figure class="highlight plain"><figcaption><span>child </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">child.parentNode.removeChild(child);</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.w3school.com.cn/htmldom/index.asp" target="_blank" rel="noopener">DOM教程</a></p>
 
       
     </div>
@@ -295,7 +319,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/菜鸟/" rel="tag">#菜鸟</a>
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
           
         </div>
       
@@ -304,13 +330,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/04/C语言学习笔记（四）/" rel="next" title="javaScript拾遗（一）">
-                <i class="fa fa-chevron-left"></i> javaScript拾遗（一）
+              <a href="/2018/04/29/html学习笔记(三)-1/" rel="next" title="html学习笔记(三)">
+                <i class="fa fa-chevron-left"></i> html学习笔记(三)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/01/javaScript拾遗（二）-1/" rel="prev" title="javaScript拾遗(二)">
+                javaScript拾遗(二) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -417,7 +447,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-DOM-document-object-model"><span class="nav-number">1.</span> <span class="nav-text">HTML DOM:document object model</span></a></li></ol></div>
             
           </div>
         </section>

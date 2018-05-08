@@ -1,0 +1,636 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习笔记,C语言," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1、字符串，字符串实际上是使用null字符’\0’终止的一维字符数组。  strcpy(s1,s2):复制字符串s2到字符串s1; strcat(s1, s2):链接字符串s2到字符串s1的末尾 strlen(s1):返回字符串s1的长度 strcmp(s1, s2):s1如果和s2相同则返回0，s1&amp;lt;s2则返回小于零，其他的返回大于零 strchr(s1,ch):返回一个指针，指向s1中字">
+<meta name="keywords" content="学习笔记,C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C 语言学习笔记（二）">
+<meta property="og:url" content="http://yoursite.com/2018/05/03/C语言学习笔记（二）/index.html">
+<meta property="og:site_name" content="jianbang">
+<meta property="og:description" content="1、字符串，字符串实际上是使用null字符’\0’终止的一维字符数组。  strcpy(s1,s2):复制字符串s2到字符串s1; strcat(s1, s2):链接字符串s2到字符串s1的末尾 strlen(s1):返回字符串s1的长度 strcmp(s1, s2):s1如果和s2相同则返回0，s1&amp;lt;s2则返回小于零，其他的返回大于零 strchr(s1,ch):返回一个指针，指向s1中字">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-04T12:42:56.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C 语言学习笔记（二）">
+<meta name="twitter:description" content="1、字符串，字符串实际上是使用null字符’\0’终止的一维字符数组。  strcpy(s1,s2):复制字符串s2到字符串s1; strcat(s1, s2):链接字符串s2到字符串s1的末尾 strlen(s1):返回字符串s1的长度 strcmp(s1, s2):s1如果和s2相同则返回0，s1&amp;lt;s2则返回小于零，其他的返回大于零 strchr(s1,ch):返回一个指针，指向s1中字">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> C 语言学习笔记（二） | jianbang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">jianbang</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">写啊写，写到天荒地老</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C 语言学习笔记（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-05-03T21:39:01+08:00" content="2018-05-03">
+              2018-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1、字符串，字符串实际上是使用null字符’\0’终止的一维字符数组。</p>
+<ul>
+<li>strcpy(s1,s2):复制字符串s2到字符串s1;</li>
+<li>strcat(s1, s2):链接字符串s2到字符串s1的末尾</li>
+<li>strlen(s1):返回字符串s1的长度</li>
+<li>strcmp(s1, s2):s1如果和s2相同则返回0，s1&lt;s2则返回小于零，其他的返回大于零</li>
+<li>strchr(s1,ch):返回一个指针，指向s1中字符第一次出现的位置</li>
+<li>strstr(s1, s2):返回一个指针，指向字符串s1中s2第二次出现的位置。</li>
+</ul>
+<p>2、结构体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct [struct tag] </span><br><span class="line">&#123;</span><br><span class="line">    member definition;</span><br><span class="line">    ...</span><br><span class="line">    member definition;</span><br><span class="line">&#125;[one or more struct variables];</span><br></pre></td></tr></table></figure>
+<p>3、位域</p>
+<blockquote>
+<p>有些信息在存储时，并不需要占用一个完整的字节，而只需占几个或一个二进制位。例如在存放一个开关量时，只有 0 和 1 两种状态，用 1 位二进位即可。为了节省存储空间，并使处理简便，C 语言又提供了一种数据结构，称为”位域”或”位段”。<br>所谓”位域”是把一个字节中的二进位划分为几个不同的区域，并说明每个区域的位数。每个域有一个域名，允许在程序中按域名进行操作。这样就可以把几个不同的对象用一个字节的二进制位域来表示</p>
+</blockquote>
+<p>struct 位域结构名<br>{<br>    位域列表<br>};<br>位域列表的形式为：<br>类型说明符 位域名：位长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct bs&#123;</span><br><span class="line">    int a:8;</span><br><span class="line">    int b:2;</span><br><span class="line">    int c:6;</span><br><span class="line">&#125;data;</span><br></pre></td></tr></table></figure>
+<p>tips:一个位域必须存储在同一个字节当中，所以位域的长度不能超过8位</p>
+<p>4、共用体<br>union [union tag]<br>{<br>    member definition<br>    …<br>    member definition<br>} [one or more union variables];</p>
+<blockquote>
+<p>共用体是一种特殊的数据类型，允许您在相同的内存位置存储不同的数据类型。您可以定义一个带有多成员的共用体，但是任何时候只能有一个成员带有值。共用体提供了一种使用相同的内存位置的有效方式.若同一时刻多个成员同时拥有值，将会出现意想不到的错误</p>
+</blockquote>
+<p>5、typedef关键字：可以使用它来为类型取一个新的名字<br>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">typeof struct Books</span><br><span class="line">&#123;</span><br><span class="line">    char title[50];</span><br><span class="line">    char author[50];</span><br><span class="line">    char subject[100];</span><br><span class="line">    int book_id;</span><br><span class="line">&#125; Book;//将struct Books取个新的名字为Book</span><br><span class="line"></span><br><span class="line">int main( )</span><br><span class="line">&#123;</span><br><span class="line">   Book book;</span><br><span class="line"> </span><br><span class="line">   strcpy( book.title, &quot;C 教程&quot;);</span><br><span class="line">   strcpy( book.author, &quot;Runoob&quot;); </span><br><span class="line">   strcpy( book.subject, &quot;编程语言&quot;);</span><br><span class="line">   book.book_id = 12345;</span><br><span class="line"> </span><br><span class="line">   printf( &quot;书标题 : %s\n&quot;, book.title);</span><br><span class="line">   printf( &quot;书作者 : %s\n&quot;, book.author);</span><br><span class="line">   printf( &quot;书类目 : %s\n&quot;, book.subject);</span><br><span class="line">   printf( &quot;书 ID : %d\n&quot;, book.book_id);</span><br><span class="line"> </span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、输入输出：</p>
+<blockquote>
+<p>当我们谈论输入的时候，意味着要向程序填充一些数据。输入可以是以文件的形式或者从命令行中进行<br>当我们谈论输出的时候，这意味着要在屏幕上、打印机上或任意文件中显示一些数据。</p>
+</blockquote>
+<p>标准文件：C语言把所有的设备都当作文件。所以设备被处理的方式与文件相同。以下的三个文件（设备）会在程序执行的时候自动打开，以便访问键盘和屏幕</p>
+<table>
+<thead>
+<tr>
+<th>标准文件</th>
+<th>文件指针</th>
+<th>设备</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标准输入</td>
+<td>Stdin</td>
+<td>键盘</td>
+</tr>
+<tr>
+<td>标准输出</td>
+<td>stdout</td>
+<td>屏幕</td>
+</tr>
+<tr>
+<td>标准错误</td>
+<td>Stderr</td>
+<td>您的屏幕</td>
+</tr>
+</tbody>
+</table>
+<p>文件指针是访问文件的方式。</p>
+<ul>
+<li>int getchar(void):从屏幕读取下一个可用的字符，并把它返回一个整数</li>
+<li>int putchar(int c)：函数把字符输出到屏幕上，并返回相同的字符，这里的参数 c 是从上一个函数返回来的参数。</li>
+<li>cahr<em> gets(cahr</em> s):函数从stdin读取一行到s所指向的缓冲区，直到一个终止符或者EOF</li>
+<li>int puts(char* s):把字符串s和一个尾随的换行符写入到stdout</li>
+<li>int scanf(const char* format …)</li>
+<li>int printf(const char* format …)</li>
+</ul>
+<p>7、文件读写<br>一个文件，无论它是文本文件还是二进制文件，都是代表了一系列的字节</p>
+<ul>
+<li>FILE<em> fopen(const char</em> filename, const char* mode);//打开文件</li>
+<li>int fclose(FILE* fp);//关闭文件</li>
+<li>int fputc(int c, FILE* fp);//写入文件，把参数c的字符值写入到输出流中</li>
+<li>int fputs(const char<em> s, FILE</em> fp)//把字符串s写入到fp指向的输出流中，输入成功返回一个非负值</li>
+<li>int<em> fgets(char</em> buf, int n, FILE* fp);//从fp指向的输入流中读取n-1个字符，它会把读取到的字符串复制到缓冲区buff，并在最后一个追加null来终止字符串</li>
+<li>int fscanf(FILE<em> fp, const char</em> format, ..);从文件中读取字符串，遇到空格会停止。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt; </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   FILE *fp = NULL;</span><br><span class="line"> </span><br><span class="line">   fp = fopen(&quot;/tmp/test.txt&quot;, &quot;w+&quot;);</span><br><span class="line">   fprintf(fp, &quot;This is testing for fprintf...\n&quot;);</span><br><span class="line">   fputs(&quot;This is testing for fputs...\n&quot;, fp);</span><br><span class="line">   fclose(fp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   FILE *fp = NULL;</span><br><span class="line">   char buff[255];</span><br><span class="line"> </span><br><span class="line">   fp = fopen(&quot;/tmp/test.txt&quot;, &quot;r&quot;);</span><br><span class="line">   fscanf(fp, &quot;%s&quot;, buff);</span><br><span class="line">   printf(&quot;1: %s\n&quot;, buff );</span><br><span class="line"> </span><br><span class="line">   fgets(buff, 255, (FILE*)fp);</span><br><span class="line">   printf(&quot;2: %s\n&quot;, buff );</span><br><span class="line">   </span><br><span class="line">   fgets(buff, 255, (FILE*)fp);</span><br><span class="line">   printf(&quot;3: %s\n&quot;, buff );</span><br><span class="line">   fclose(fp);</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/学习笔记/" rel="tag">#学习笔记</a>
+          
+            <a href="/tags/C语言/" rel="tag">#C语言</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/02/C语言学习笔记（一）/" rel="next" title="javaScript拾遗（一）">
+                <i class="fa fa-chevron-left"></i> javaScript拾遗（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/04/C语言学习笔记（三）/" rel="prev" title="javaScript拾遗（一）">
+                javaScript拾遗（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="健榜" />
+          <p class="site-author-name" itemprop="name">健榜</p>
+          <p class="site-description motion-element" itemprop="description">技术、笔记</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">健榜</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
