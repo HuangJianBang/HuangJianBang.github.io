@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: C | jianbang</title>
+  <title>javaScript拾遗（一） | jianbang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="技术、笔记">
-<meta name="keywords" content="html,css,javascript,js,python,java,C,C++，前端，机器学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jianbang">
-<meta property="og:url" content="http://yoursite.com/tags/C/index.html">
+  <meta name="description" content="ECMAScript学习笔记1、ES中的原始值和引用值：原始值：存在存在栈中，即直接存在变量访问的位置引用值：存储堆中的对象，即存储变量处的是一个指针，该指针指向存储对象的内村处。">
+<meta name="keywords" content="学习笔记,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaScript拾遗（一）">
+<meta property="og:url" content="http://yoursite.com/2018/05/05/ECMAScript学习笔记（一）/index.html">
 <meta property="og:site_name" content="jianbang">
-<meta property="og:description" content="技术、笔记">
+<meta property="og:description" content="ECMAScript学习笔记1、ES中的原始值和引用值：原始值：存在存在栈中，即直接存在变量访问的位置引用值：存储堆中的对象，即存储变量处的是一个指针，该指针指向存储对象的内村处。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-14T03:52:20.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jianbang">
-<meta name="twitter:description" content="技术、笔记">
+<meta name="twitter:title" content="javaScript拾遗（一）">
+<meta name="twitter:description" content="ECMAScript学习笔记1、ES中的原始值和引用值：原始值：存在存在栈中，即直接存在变量访问的位置引用值：存储堆中的对象，即存储变量处的是一个指针，该指针指向存储对象的内村处。">
   
     <link rel="alternative" href="/atom.xml" title="jianbang" type="application/atom+xml">
   
@@ -162,148 +163,242 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ECMAScript学习笔记（一）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javaScript拾遗（一）
+    </h1>
+  
+
+        
+        <a href="/2018/05/05/ECMAScript学习笔记（一）/" class="archive-article-date">
+  	<time datetime="2018-05-04T18:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ECMAScript学习笔记"><a href="#ECMAScript学习笔记" class="headerlink" title="ECMAScript学习笔记"></a>ECMAScript学习笔记</h1><p>1、ES中的原始值和引用值：<br>原始值：存在存在栈中，即直接存在变量访问的位置<br>引用值：存储堆中的对象，即存储变量处的是一个指针，该指针指向存储对象的内村处。<br><a id="more"></a><br>2、原始类型：即 Undefined、Null、Boolean、Number 和 String；与之相对的是引用类型，常见的有对象。</p>
+<p>3、类型转换：<br>转换成字符串：toString()<br>转换成数字：parseInt()、parseFloat()<br>tips:从位置0开始查看每个字符，直到找到第一个非有效的数字为止，然后将前面的有效数字转换成整数</p>
+<p>4、强制类型转换</p>
+<ul>
+<li>Boolean(value):将value转换成布尔类型的值</li>
+<li>Number(value):将value转换成数字</li>
+<li>String(value):将value转换成字符串</li>
+</ul>
+<p>5、String对象<br>创建：var sOtringObject = new String(“hello World”);<br>方法和属性：</p>
+<ul>
+<li>length</li>
+<li>charAt(),charCodeAt();</li>
+<li>concat():调用这个方法后的原始对象值不变</li>
+<li>indexOf()、lastIndexOf()</li>
+<li>localeCompare()</li>
+<li>slice()、substring()</li>
+</ul>
+<p>6、instanceof（）：用于识别正在执行的对象的类型</p>
+<p>7、delete运算符和void运算符<br>前者删除前面定一个的属性或者方法<br>后者对任何的值都是返回undefined</p>
+<p>8、等性运算符：==、！=</p>
+<ul>
+<li>如果符号的两侧是对象，则比较他们的引用值，若只想同一个对象，则返回true</li>
+</ul>
+<p>8、全等号和非全等号：<code>===</code>、<code>!===</code><br>在比较值前不自动进行类型的转换，所以只有类型和引用值相同的时候才会返回true</p>
+<p>9、for-in语句：<br>用于枚举对象的属性</p>
+<p>10、标签语句:主要是为了可以使后面可以通过调用label来调用语句<br>label:statement</p>
+<p>11、with语句：用户设置代码在特定对象中的作用域</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var sMessage = &quot;hello&quot;;</span><br><span class="line">with(sMessage) &#123;</span><br><span class="line">    alert(toUpperCase());</span><br><span class="line">&#125;//with语句用于字符串，所以在调用toUpperCase（）方法的时候，解释程序会先查找该方法是否为本地的函数，如果不是，它将查找伪对象sMessage,看它是否为该对象的方法。</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/assets/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/07/C语言学习笔记（三）/" class="archive-article-date">
-  	<time datetime="2018-05-06T18:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/07/C语言学习笔记（三）/">javaScript拾遗（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+	<span id="busuanzi_container_page_pv">
+ 	 |阅读量(<span id="busuanzi_value_page_pv"></span>)
+	</span>
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/05/ECMAScript学习笔记（一）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/06/C语言学习笔记（一）/" class="archive-article-date">
-  	<time datetime="2018-05-05T18:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-06</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/05/06/C语言学习笔记（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          javaScript拾遗（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/04/C语言学习笔记（四）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javaScript拾遗（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/06/C语言学习笔记（一）/">javaScript拾遗（一）</a>
-    </h1>
+  <!-- LiveRe City install code -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTk0Mi8xMjQ3OA==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+<!-- completed City install code -->
+
+   
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/04/C语言学习笔记（四）/" class="archive-article-date">
-  	<time datetime="2018-05-04T13:15:44.526Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/04/C语言学习笔记（四）/">javaScript拾遗（一）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -336,9 +431,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

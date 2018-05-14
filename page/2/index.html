@@ -164,45 +164,27 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-html学习笔记一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-the-first-article" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/28/html学习笔记一/">html学习笔记(一)</a>
+      <a class="article-title" href="/2018/05/02/the-first-article/">世界，你好！</a>
     </h1>
   
 
         
-        <a href="/2018/04/28/html学习笔记一/" class="archive-article-date">
-  	<time datetime="2018-04-28T12:26:00.454Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-28</time>
+        <a href="/2018/05/02/the-first-article/" class="archive-article-date">
+  	<time datetime="2018-05-01T18:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>将图片作为链接:<br><figure class="highlight plain"><figcaption><span>href</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;img border=&quot;0&quot; src=&quot;/i/eg_buttonnext.gif&quot; /&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
-<p>a标签的 target 属性：<br>target=”_top”:在原窗口中打开链接；<br>target=”_blank”：在新窗口中打开链接</p>
-<p>排列图像：<br><figure class="highlight plain"><figcaption><span>src</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">ps:align还可以是：middle, top</span><br><span class="line"></span><br><span class="line">浮动图像：</span><br><span class="line">```&lt;p&gt;</span><br><span class="line">&lt;img src=&quot;#&quot; align=&quot;left&quot;&gt;</span><br><span class="line">带有图像的一个段落。图像的 align 属性设置为 &quot;left&quot;。图像将浮动到文本的左侧。</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
-<p>align还可以取值：right,将图片浮动到文字的右边</p>
-<p>创建图像的映射：<br><figure class="highlight plain"><figcaption><span>src</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;map name=&quot;planetmap&quot; id=&quot;planetmap&quot;&gt;</span><br><span class="line">&lt;area shape=&quot;circle&quot; coords=&quot;180,139,14&quot; href=&quot;#&quot; target=&quot;_blank&quot; alt=&quot;Venus&quot; /&gt;</span><br><span class="line">&lt;area shape=&quot;circle&quot; coodrs=&quot;129,161, 10&quot; href=&quot;#&quot; target=&quot;_blank&quot; alt=&quot;Mercury&quot;&gt;</span><br><span class="line">&lt;/map&gt;</span><br></pre></td></tr></table></figure></p>
-<p>img元素中的usemap属性引用map元素的id或者name属性</p>
-<p>表格：<br>跨两列的单元表格：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;th&gt;姓名&lt;/th&gt;</span><br><span class="line">  &lt;th colspan=&quot;2&quot;&gt;电话&lt;/th&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Bill Gates&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;555 77 854&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;555 77 855&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
-<p>跨两行的表格单元同理</p>
-<p>单元表格的边距：cellpadding<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot; cellpadding=&quot;10&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
-<p>单元格的艰间距：cellspacing<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot; cellspacing=&quot;10&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
-<p>向表格添加背景颜色或者图像：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot; bgcolor=&quot;red&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;table border=&quot;1&quot; background=&quot;/i/eg_bg_07.gif&quot;&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;First&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;   </span><br><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td&gt;Second&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;Row&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
-<p>表格单元的排列内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;td algin=&quot;left&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>框架集：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;frameset cols=&quot;25%,50%,25%&quot;&gt;</span><br><span class="line">  &lt;frame src=&quot;/example/html/frame_a.html&quot;&gt;</span><br><span class="line">  &lt;frame src=&quot;/example/html/frame_b.html&quot;&gt;</span><br><span class="line">  &lt;frame src=&quot;/example/html/frame_c.html&quot;&gt;</span><br><span class="line">&lt;/frameset&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>frameset与body不能同数出现在一个页面中；<br>cols的值分别表示内嵌的页面站的屏幕的比例</p>
-<p>若客户的浏览器无法处理框架：添加noframe标签进行补救<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;frameset cols=&quot;25%,50%,25%&quot;&gt;</span><br><span class="line">  &lt;frame src=&quot;/example/html/frame_a.html&quot;&gt;</span><br><span class="line">  &lt;frame src=&quot;/example/html/frame_b.html&quot;&gt;</span><br><span class="line">  &lt;frame src=&quot;/example/html/frame_c.html&quot;&gt;</span><br><span class="line">&lt;noframes&gt;</span><br><span class="line">&lt;body&gt;您的浏览器无法处理框架！&lt;/body&gt;</span><br><span class="line">&lt;/noframes&gt;</span><br><span class="line">&lt;/frameset&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<p>tips:可以为frame标签添加:noresize=”noresize”使得内嵌页面的大小不可通过客户进行调整<br><figure class="highlight plain"><figcaption><span>src</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">内联框架：使用iframe作为链接的目标</span><br></pre></td></tr></table></figure></p>
-<p><iframe src="/example/html/demo_iframe.html" name="iframe_a"></iframe></p>
-<p></p><p><a href="http://www.w3school.com.cn" target="iframe_a">W3School.com.cn</a></p><br>tips：由于链接的目标匹配 iframe 的名称，所以链接会在 iframe 中打开。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">字符实体：</span><br></pre></td></tr></table></figure><p></p>
-<p>空格：&nbsp; 小于号：&lt; 大于号：&gt;<br><code>`</code></p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;Hello World&quot;);</span><br></pre></td></tr></table></figure>
 
       
 
@@ -216,11 +198,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">菜鸟</a>
         		</li>
       		
 		</ul>
@@ -233,7 +211,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/28/html学习笔记一/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/02/the-first-article/">展开全文 >></a>
         </p>
       
 
