@@ -77,6 +77,10 @@
     			
             
     			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+            
+    			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
@@ -354,18 +358,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/07/C语言学习笔记（三）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/06/C语言学习笔记（二）/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          C语言学习笔记（三）
+          C 语言学习笔记（二）
         
       </div>
     </a>
   
   
-    <a href="/2018/05/06/C语言学习笔记（二）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C 语言学习笔记（二）</div>
+    <a href="/2018/05/05/ECMAScript学习笔记（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ECMAScript学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -477,17 +481,25 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -574,6 +586,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="/jianbang.me" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>jianbang&#39;s blog</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     
