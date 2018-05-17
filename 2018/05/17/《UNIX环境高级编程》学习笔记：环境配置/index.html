@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://mrclown.cn/15265718184761.jpg">
 <meta property="og:image" content="http://mrclown.cn/15265720407439.jpg">
 <meta property="og:image" content="http://mrclown.cn/15265721311443.jpg">
-<meta property="og:updated_time" content="2018-05-17T16:07:26.375Z">
+<meta property="og:updated_time" content="2018-05-17T16:12:46.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《UNIX环境高级编程》学习笔记：环境配置">
 <meta name="twitter:description" content="我的环境一开始是：macOS 10.13.2,gcc:7.1.0 一、下载源码源码链接">
@@ -195,15 +195,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>我的环境一开始是：<br>macOS 10.13.2,<br>gcc:7.1.0</p>
-<h3 id="一、下载源码"><a href="#一、下载源码" class="headerlink" title="一、下载源码"></a>一、下载源码</h3><p>源码链接<a href="www.apuebook,com"></a><br><a id="more"></a></p>
-<h3 id="二、开始编译源码"><a href="#二、开始编译源码" class="headerlink" title="二、开始编译源码"></a>二、开始编译源码</h3><p>1、进入到apue.3e，输入：make<br>报错：<br><img src="http://mrclown.cn/15265697756775.jpg" alt=""><br>类似的语法错误，在某个地方需要“,”或者“；”，打开syslog.h文件，如下：<br><img src="http://mrclown.cn/15265699490886.jpg" alt=""><br>但是但是，这个文件并不能修改啊，而且是系统文件，没理由出现语法错误啊。<br>找了好久，发现这是编译器gcc的锅，这个bug已经被官方mark到网站上，<br>见链接<a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=82787" target="_blank" rel="noopener"></a><br>大概如下：<br><img src="http://mrclown.cn/15265702882497.jpg" alt=""><br>但是并没有提供解决办法。。。只能升级gcc版本，于是在terminal输入如下命令，升级到最新版本，我的是升级到8.1.0</p>
+<h3 id="一、下载源码"><a href="#一、下载源码" class="headerlink" title="一、下载源码"></a>一、下载源码</h3><p><a href="www.apuebook,com">源码链接</a><br><a id="more"></a></p>
+<h3 id="二、开始编译源码"><a href="#二、开始编译源码" class="headerlink" title="二、开始编译源码"></a>二、开始编译源码</h3><p>1、进入到apue.3e，输入：make<br>报错：</p>
+<p><img src="http://mrclown.cn/15265697756775.jpg" alt=""></p>
+<p>类似的语法错误，在某个地方需要“,”或者“；”，打开syslog.h文件，如下：</p>
+<p><img src="http://mrclown.cn/15265699490886.jpg" alt=""></p>
+<p>但是但是，这个文件并不能修改啊，而且是系统文件，没理由出现语法错误啊。<br>找了好久，发现这是编译器gcc的锅，这个bug已经被官方mark到网站上，<br><a href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=82787" target="_blank" rel="noopener">见链接</a><br>大概如下：<br><img src="http://mrclown.cn/15265702882497.jpg" alt=""><br>但是并没有提供解决办法。。。只能升级gcc版本，于是在terminal输入如下命令，升级到最新版本，我的是升级到8.1.0</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew upgrade gcc</span><br></pre></td></tr></table></figure>
 <p>这时候再回到apue.3e目录下，输入如下命令（因为前面已经make锅一次，但是报错了）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make clean</span><br></pre></td></tr></table></figure>
 <p>然后再make一下，虽然会有些警告级别的错误，但。。。问题不大。</p>
 <h3 id="三、将相关文件复制到相关目录下"><a href="#三、将相关文件复制到相关目录下" class="headerlink" title="三、将相关文件复制到相关目录下"></a>三、将相关文件复制到相关目录下</h3><p>回到apue.3e目录下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、sudo cp ./include/apue.h /usr/include/</span><br><span class="line">2、sudo cp ./lib/libapue.a /usr/local/lib/</span><br><span class="line">3、sudo cp ./lib/error.c /usr/include //似乎这个文件不用复制也行</span><br></pre></td></tr></table></figure>
-<p>网上一般的教程，在这一步是没有报错的，但是但是，我们的系统时10.13.0以后的版本，貌似并不能直接将外部的文件随意复制到一些敏感的系统目录下，报错：<code>Operation not permitted</code><br>以下是解决办法(参考链接)<a href="https://blog.csdn.net/z82367825/article/details/55000615" target="_blank" rel="noopener"></a><br>1、先记下(因为等下重启电脑你会忘掉)</p>
+<p>网上一般的教程，在这一步是没有报错的，但是但是，我们的系统时10.13.0以后的版本，貌似并不能直接将外部的文件随意复制到一些敏感的系统目录下，报错：<code>Operation not permitted</code><br><a href="https://blog.csdn.net/z82367825/article/details/55000615" target="_blank" rel="noopener">以下是解决办法(参考链接)</a><br>1、先记下(因为等下重启电脑你会忘掉)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil disable</span><br></pre></td></tr></table></figure>
 <p>2、重启电脑，重启的过程中一直按住 Command+R 键，打开终端，输入上述命令，即可<br>之后就可以执行复制文件的操作了</p>
 <p>###四、编写书上的第一个文件，进行测试<br>大概如下：</p>
@@ -518,15 +522,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">菜鸟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unix/linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">菜鸟</a>
               </li>
             
             <div class="clearfix"></div>
