@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://mrclown.cn/15265718184761.jpg">
 <meta property="og:image" content="http://mrclown.cn/15265720407439.jpg">
 <meta property="og:image" content="http://mrclown.cn/15265721311443.jpg">
-<meta property="og:updated_time" content="2018-05-17T16:13:52.491Z">
+<meta property="og:updated_time" content="2018-05-17T16:19:57.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《UNIX环境高级编程》学习笔记：环境配置">
 <meta name="twitter:description" content="我的环境一开始是：macOS 10.13.2,gcc:7.1.0 一、下载源码源码链接">
@@ -210,7 +210,7 @@
 <p>网上一般的教程，在这一步是没有报错的，但是但是，我们的系统时10.13.0以后的版本，貌似并不能直接将外部的文件随意复制到一些敏感的系统目录下，报错：<code>Operation not permitted</code><br><a href="https://blog.csdn.net/z82367825/article/details/55000615" target="_blank" rel="noopener">以下是解决办法(参考链接)</a><br>1、先记下(因为等下重启电脑你会忘掉)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">csrutil disable</span><br></pre></td></tr></table></figure>
 <p>2、重启电脑，重启的过程中一直按住 Command+R 键，打开终端，输入上述命令，即可<br>之后就可以执行复制文件的操作了</p>
-<p>###四、编写书上的第一个文件，进行测试<br>大概如下：</p>
+<h3 id="四、编写书上的第一个文件，进行测试"><a href="#四、编写书上的第一个文件，进行测试" class="headerlink" title="四、编写书上的第一个文件，进行测试"></a>四、编写书上的第一个文件，进行测试</h3><p>大概如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;apue.h&quot;</span><br><span class="line">#include &quot;dirent.h&quot; </span><br><span class="line"></span><br><span class="line">int main(int argc, char const *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	DIR *dp;</span><br><span class="line">	struct dirent *dirp;</span><br><span class="line">	</span><br><span class="line">	if(argc != 2) &#123;</span><br><span class="line">		err_quit(&quot;usage: ls directory_name&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if((dp = opendir(argv[1])) == NULL) &#123;</span><br><span class="line">		err_sys(&quot;can&apos;t open %s&quot;, argv[1]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	while((dirp = readdir(dp)) != NULL) &#123;</span><br><span class="line">		printf(&quot;%s\n&quot;, dirp-&gt;d_name);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在终端编译（我的是直接在sublime一个窗口写代码，一个窗口开启终端）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc myls.c -o myls</span><br></pre></td></tr></table></figure>
@@ -498,10 +498,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
@@ -510,7 +506,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C语言</a>
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,7 +514,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">菜鸟</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,10 +531,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">菜鸟</a>
               </li>
             
             <div class="clearfix"></div>
