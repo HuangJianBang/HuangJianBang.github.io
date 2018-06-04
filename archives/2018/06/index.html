@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>C语言学习笔记（四） | jianbang</title>
+  <title>Archives: 2018/6 | jianbang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C语言学习笔记（四）1、C错误处理  C 语言不提供对错误处理的直接支持，但是作为一种系统编程语言，它以返回值的形式允许您访问底层数据。在发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个错误代码 errno，该错误代码是全局变量，表示在函数调用期间发生了错误。您可以在 errno.h 头文件中找到各种各样的错误代码。   所以，C 程序员可以通过检查返回值，然">
-<meta name="keywords" content="C,学习笔记">
-<meta property="og:type" content="article">
-<meta property="og:title" content="C语言学习笔记（四）">
-<meta property="og:url" content="http://yoursite.com/2018/05/04/C语言学习笔记（四）/index.html">
+  <meta name="description" content="技术、笔记">
+<meta name="keywords" content="html,css,javascript,js,python,java,C,C++，前端，机器学习">
+<meta property="og:type" content="website">
+<meta property="og:title" content="jianbang">
+<meta property="og:url" content="http://yoursite.com/archives/2018/06/index.html">
 <meta property="og:site_name" content="jianbang">
-<meta property="og:description" content="C语言学习笔记（四）1、C错误处理  C 语言不提供对错误处理的直接支持，但是作为一种系统编程语言，它以返回值的形式允许您访问底层数据。在发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个错误代码 errno，该错误代码是全局变量，表示在函数调用期间发生了错误。您可以在 errno.h 头文件中找到各种各样的错误代码。   所以，C 程序员可以通过检查返回值，然">
+<meta property="og:description" content="技术、笔记">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-14T03:56:19.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言学习笔记（四）">
-<meta name="twitter:description" content="C语言学习笔记（四）1、C错误处理  C 语言不提供对错误处理的直接支持，但是作为一种系统编程语言，它以返回值的形式允许您访问底层数据。在发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个错误代码 errno，该错误代码是全局变量，表示在函数调用期间发生了错误。您可以在 errno.h 头文件中找到各种各样的错误代码。   所以，C 程序员可以通过检查返回值，然">
+<meta name="twitter:title" content="jianbang">
+<meta name="twitter:description" content="技术、笔记">
   
     <link rel="alternative" href="/atom.xml" title="jianbang" type="application/atom+xml">
   
@@ -167,256 +166,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C语言学习笔记（四）" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      C语言学习笔记（四）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/06/04/常用Git操作-一/" class="archive-article-date">
+  	<time datetime="2018-06-04T12:01:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/06/04/常用Git操作-一/">常用Git操作(一)</a>
     </h1>
   
 
-        
-        <a href="/2018/05/04/C语言学习笔记（四）/" class="archive-article-date">
-  	<time datetime="2018-05-04T13:15:44.526Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C语言学习笔记（四）<br>1、C错误处理</p>
-<blockquote>
-<p>C 语言不提供对错误处理的直接支持，但是作为一种系统编程语言，它以返回值的形式允许您访问底层数据。在发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个错误代码 errno，该错误代码是全局变量，表示在函数调用期间发生了错误。您可以在 errno.h 头文件中找到各种各样的错误代码。</p>
-</blockquote>
-<blockquote>
-<p>所以，C 程序员可以通过检查返回值，然后根据返回值决定采取哪种适当的动作。开发人员应该在程序初始化时，把 errno 设置为 0，这是一种良好的编程习惯。0 值表示程序中没有错误。<br><a id="more"></a></p>
-</blockquote>
-<ul>
-<li>perroe(): 函数显示您传给它的字符串，后跟一个冒号、一个空格和当前 errno 值的文本表示形式。</li>
-<li>strerror() 函数，返回一个指针，指针指向当前 errno 值的文本表示形式。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;errno.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">extern int errno ;//系统宏定义有这个变量</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">   FILE * pf;</span><br><span class="line">   int errnum;</span><br><span class="line">   pf = fopen (&quot;unexist.txt&quot;, &quot;rb&quot;);</span><br><span class="line">   if (pf == NULL)</span><br><span class="line">   &#123;</span><br><span class="line">      errnum = errno;</span><br><span class="line">      fprintf(stderr, &quot;错误号: %d\n&quot;, errno);</span><br><span class="line">      perror(&quot;通过 perror 输出错误&quot;);</span><br><span class="line">      fprintf(stderr, &quot;打开文件错误: %s\n&quot;, strerror( errnum ));//stderr是系统提供的关于错误的文件流</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">      fclose (pf);</span><br><span class="line">   &#125;</span><br><span class="line">   return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、递归：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//语法格式</span><br><span class="line">void recursion()</span><br><span class="line">&#123;</span><br><span class="line">   statements;</span><br><span class="line">   ... ... ...</span><br><span class="line">   recursion(); /* 函数调用自身 */</span><br><span class="line">   ... ... ...</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   recursion();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>举个栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"> </span><br><span class="line">int fibonaci(int i)</span><br><span class="line">&#123;</span><br><span class="line">   if(i == 0)</span><br><span class="line">   &#123;</span><br><span class="line">      return 0;</span><br><span class="line">   &#125;</span><br><span class="line">   if(i == 1)</span><br><span class="line">   &#123;</span><br><span class="line">      return 1;</span><br><span class="line">   &#125;</span><br><span class="line">   return fibonaci(i-1) + fibonaci(i-2);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int  main()</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    for (i = 0; i &lt; 10; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       printf(&quot;%d\t\n&quot;, fibonaci(i));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;//斐波那契数列</span><br></pre></td></tr></table></figure>
-<p>3、可变参数</p>
-<ul>
-<li>引用头文件：stdarg.h</li>
-<li>定义一个函数，最后一个参数为省略号，省略号前面可以设置自定义参数。</li>
-<li>在函数定义中创建一个 va_list 类型变量，该类型是在 stdarg.h 头文件中定义的。</li>
-<li>使用 int 参数和 va_start 宏来初始化 va_list 变量为一个参数列表。宏 va_start 是在 stdarg.h 头文件中定义</li>
-<li>使用 va_arg 宏和 va_list 变量来访问参数列表中的每个项。</li>
-<li>使用宏 va_end 来清理赋予 va_list 变量的内存。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdarg.h&gt;</span><br><span class="line"></span><br><span class="line">double average(int num,...)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    va_list valist;</span><br><span class="line">    double sum = 0.0;</span><br><span class="line">    int i;</span><br><span class="line"></span><br><span class="line">    /* 为 num 个参数初始化 valist */</span><br><span class="line">    va_start(valist, num);</span><br><span class="line"></span><br><span class="line">    /* 访问所有赋给 valist 的参数 */</span><br><span class="line">    for (i = 0; i &lt; num; i++)</span><br><span class="line">    &#123;</span><br><span class="line">       sum += va_arg(valist, int);</span><br><span class="line">    &#125;</span><br><span class="line">    /* 清理为 valist 保留的内存 */</span><br><span class="line">    va_end(valist);</span><br><span class="line"></span><br><span class="line">    return sum/num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   printf(&quot;Average of 2, 3, 4, 5 = %f\n&quot;, average(4, 2,3,4,5));</span><br><span class="line">   printf(&quot;Average of 5, 10, 15 = %f\n&quot;, average(3, 5,10,15));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4、内存管理<br>管理内存的函数可以在&lt;stdlib.h&gt;头文件中找到</p>
-<ul>
-<li>void<em> calloc():在内存中动态地分配 num 个长度为 size 的连续空间，并将每一个字节都初始化为 0。所以它的结果是分配了 num</em>size 个字节长度的内存空间，并且每个字节的值都是0</li>
-<li>void free(void *address):该函数释放 address 所指向的内存块,释放的是动态分配的内存空间。</li>
-<li>void malloc(int num):在堆区分配一块指定大小的内存空间，用来存放数据。这块内存空间在函数执行完成后不会被初始化，它们的值是未知的。</li>
-<li>void <em>realloc(void </em>address, int newsize):该函数重新分配内存，把内存扩展到 newsize。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   char name[100];</span><br><span class="line">   char *description;</span><br><span class="line"></span><br><span class="line">   strcpy(name, &quot;Zara Ali&quot;);</span><br><span class="line"></span><br><span class="line">   /* 动态分配内存 */</span><br><span class="line">   description = malloc( 200 * sizeof(char) );</span><br><span class="line">   if( description == NULL )</span><br><span class="line">   &#123;</span><br><span class="line">      fprintf(stderr, &quot;Error - unable to allocate required memory\n&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">      strcpy( description, &quot;Zara ali a DPS student in class 10th&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   printf(&quot;Name = %s\n&quot;, name );</span><br><span class="line">   printf(&quot;Description: %s\n&quot;, description );</span><br><span class="line">&#125;//动态分配内存</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">   char name[100];</span><br><span class="line">   char *description;</span><br><span class="line"></span><br><span class="line">   strcpy(name, &quot;Zara Ali&quot;);</span><br><span class="line"></span><br><span class="line">   /* 动态分配内存 */</span><br><span class="line">   description = malloc( 30 * sizeof(char) );</span><br><span class="line">   if( description == NULL )</span><br><span class="line">   &#123;</span><br><span class="line">      fprintf(stderr, &quot;Error - unable to allocate required memory\n&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">      strcpy( description, &quot;Zara ali a DPS student.&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   /* 假设您想要存储更大的描述信息 */</span><br><span class="line">   description = realloc( description, 100 * sizeof(char) );</span><br><span class="line">   if( description == NULL )</span><br><span class="line">   &#123;</span><br><span class="line">      fprintf(stderr, &quot;Error - unable to allocate required memory\n&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">      strcat( description, &quot;She is in class 10th&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   printf(&quot;Name = %s\n&quot;, name );</span><br><span class="line">   printf(&quot;Description: %s\n&quot;, description );</span><br><span class="line"></span><br><span class="line">   /* 使用 free() 函数释放内存 */</span><br><span class="line">   free(description);</span><br><span class="line">&#125;//重新调整内存的大小和释放内存，注意对比和动态分配内存操作进行对比</span><br></pre></td></tr></table></figure>
-<p>5、命令行参数</p>
-<p><code>int main(int argc, char *argv[])</code></p>
-<ul>
-<li>argc：指传入参数的个数</li>
-<li>argv[]:一个指针数组，指向传递给程序的每个参数。</li>
-<li>argv[0]记录的参数是文件的名称</li>
-</ul>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/assets/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/assets/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bbs</a>
         		</li>
       		
 		</ul>
 	</div>
 
-	<span id="busuanzi_container_page_pv">
- 	 |阅读量(<span id="busuanzi_value_page_pv"></span>)
-	</span>
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/04/C语言学习笔记（四）/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/05/ECMAScript学习笔记（一）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ECMAScript学习笔记
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/05/04/javaScript拾遗（二）-1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javaScript拾遗(二)</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  <!-- LiveRe City install code -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC8zNTk0Mi8xMjQ3OA==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
-</div>
-<!-- completed City install code -->
-
-   
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -442,8 +249,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
