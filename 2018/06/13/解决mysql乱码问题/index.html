@@ -15,17 +15,22 @@
 
 
 
-<meta name="description" content="技术、笔记">
-<meta name="keywords" content="html,css,javascript,js,python,java,C,C++，前端，机器学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jianbang">
-<meta property="og:url" content="http://yoursite.com/archives/2018/05/index.html">
+<meta name="description" content="问题描述：默认情况下，在本地将中文插入mysql的时候,报如下的错误： 解决方法1、进入到mysql的安装目录，找到12 cd /usr/local/mysql/support-files12、将该文件复制到```/etc/```目录下，并命名为：my.cnf,此时该文件是只读模式 cp ./my-default.cnf /etc/my.cnf13、修改```my.cnf```文件 sudo ch">
+<meta name="keywords" content="mysql,编码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决mysql乱码问题">
+<meta property="og:url" content="http://yoursite.com/2018/06/13/解决mysql乱码问题/index.html">
 <meta property="og:site_name" content="jianbang">
-<meta property="og:description" content="技术、笔记">
+<meta property="og:description" content="问题描述：默认情况下，在本地将中文插入mysql的时候,报如下的错误： 解决方法1、进入到mysql的安装目录，找到12 cd /usr/local/mysql/support-files12、将该文件复制到```/etc/```目录下，并命名为：my.cnf,此时该文件是只读模式 cp ./my-default.cnf /etc/my.cnf13、修改```my.cnf```文件 sudo ch">
 <meta property="og:locale" content="zh_Hans">
+<meta property="og:image" content="http://mrclown.cn/屏幕快照 2018-06-13 上午10.20.34.png">
+<meta property="og:image" content="http://mrclown.cn/屏幕快照 2018-06-13 上午10.22.02.png">
+<meta property="og:image" content="http://mrclown.cn/屏幕快照 2018-06-13 上午10.49.47.png">
+<meta property="og:updated_time" content="2018-06-13T02:51:19.560Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jianbang">
-<meta name="twitter:description" content="技术、笔记">
+<meta name="twitter:title" content="解决mysql乱码问题">
+<meta name="twitter:description" content="问题描述：默认情况下，在本地将中文插入mysql的时候,报如下的错误： 解决方法1、进入到mysql的安装目录，找到12 cd /usr/local/mysql/support-files12、将该文件复制到```/etc/```目录下，并命名为：my.cnf,此时该文件是只读模式 cp ./my-default.cnf /etc/my.cnf13、修改```my.cnf```文件 sudo ch">
+<meta name="twitter:image" content="http://mrclown.cn/屏幕快照 2018-06-13 上午10.20.34.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2018/5 | jianbang</title>
+<title>解决mysql乱码问题 | jianbang</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,8 +72,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -268,291 +273,174 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-解决mysql乱码问题" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2018/06/13/解决mysql乱码问题/" class="article-date">
+      <time datetime="2018-06-13T02:14:05.000Z" itemprop="datePublished">2018-06-13</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      解决mysql乱码问题
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/17/《UNIX环境高级编程》学习笔记：环境配置/" class="archive-article-date">
-      <time datetime="2018-05-17T15:00:17.000Z" itemprop="datePublished">05-17</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/17/《UNIX环境高级编程》学习笔记：环境配置/">《UNIX环境高级编程》学习笔记：环境配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>默认情况下，在本地将中文插入mysql的时候,报如下的错误：<br><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.20.34.png" alt="屏幕快照 2018-06-13 上午10.20.34"></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1、进入到mysql的安装目录，找到<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>cd /usr/local/mysql/support-files<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2、将该文件复制到```/etc/```目录下，并命名为：my.cnf,此时该文件是只读模式</span><br></pre></td></tr></table></figure></p>
+<p>cp ./my-default.cnf /etc/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3、修改```my.cnf```文件</span><br></pre></td></tr></table></figure></p>
+<p>sudo chmod 766 my.cnf<br>vim my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加如下信息:</span><br></pre></td></tr></table></figure></p>
+<p>[mysqld]<br> default-storage-engine=INNODB<br> character-set-server=utf8<br> collation-server=utf8_general_ci<br>[client]<br> default-character-set=utf8<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">定位到最后一行，将如下一句话注释掉</span><br><span class="line">![屏幕快照 2018-06-13 上午10.41.33](http://mrclown.cn/屏幕快照 2018-06-13 上午10.41.33.png)</span><br><span class="line">网上的很多教程就是因为没有注释掉这一句话，所以才会导致最后的修改失败</span><br><span class="line"></span><br><span class="line">4、最后将my.cnf文件修改为```只读```模式</span><br></pre></td></tr></table></figure></p>
+<p>sudo chmod 744 my.cnf<br><code>`</code></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>1、登陆mysql,输入status<br><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.22.02.png" alt="屏幕快照 2018-06-13 上午10.22.02"></p>
+<p>2、创建数据库与数据表</p>
+<p><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.49.47.png" alt="屏幕快照 2018-06-13 上午10.49.47"></p>
+<p>成功！！！</p>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix-linux/">unix/linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/06/13/解决mysql乱码问题/">解决mysql乱码问题</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">健榜</a></p>
+        <p><span>发布时间:</span>2018-06-13, 10:14:05</p>
+        <p><span>最后更新:</span>2018-06-13, 10:51:19</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/13/解决mysql乱码问题/" title="解决mysql乱码问题">http://yoursite.com/2018/06/13/解决mysql乱码问题/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/13/解决mysql乱码问题/　　作者: 健榜" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/16/2018-05-16/" class="archive-article-date">
-      <time datetime="2018-05-15T18:15:33.000Z" itemprop="datePublished">05-16</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/16/2018-05-16/">小程序初体验(一)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/07/C语言学习笔记（三）/" class="archive-article-date">
-      <time datetime="2018-05-06T18:15:33.000Z" itemprop="datePublished">05-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/07/C语言学习笔记（三）/">C语言学习笔记（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/06/C语言学习笔记（一）/" class="archive-article-date">
-      <time datetime="2018-05-05T18:15:33.000Z" itemprop="datePublished">05-06</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/06/C语言学习笔记（一）/">C语言学习笔记一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/06/C语言学习笔记（二）/" class="archive-article-date">
-      <time datetime="2018-05-05T18:15:33.000Z" itemprop="datePublished">05-06</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/06/C语言学习笔记（二）/">C 语言学习笔记（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/05/ECMAScript学习笔记（一）/" class="archive-article-date">
-      <time datetime="2018-05-04T18:15:33.000Z" itemprop="datePublished">05-05</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/05/ECMAScript学习笔记（一）/">ECMAScript学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/04/C语言学习笔记（四）/" class="archive-article-date">
-      <time datetime="2018-05-04T13:15:44.526Z" itemprop="datePublished">05-04</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/04/C语言学习笔记（四）/">C语言学习笔记（四）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/05/04/javaScript拾遗(一)-1/" class="archive-article-date">
-      <time datetime="2018-05-03T18:15:33.000Z" itemprop="datePublished">05-04</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/04/javaScript拾遗(一)-1/">javaScript拾遗（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/05/page/2/">Next &raquo;</a>
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/06/04/常用Git操作-一/">
+                    常用Git操作(一)
+                </a>
+            </div>
+        
     </nav>
-  
 
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">2.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">3.</span> <span class="toc-text">测试</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"解决mysql乱码问题　| jianbang　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/06/04/常用Git操作-一/" title="下一篇: 常用Git操作(一)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/解决mysql乱码问题/">解决mysql乱码问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/04/常用Git操作-一/">常用Git操作(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/17/《UNIX环境高级编程》学习笔记：环境配置/">《UNIX环境高级编程》学习笔记：环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/16/2018-05-16/">小程序初体验(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/07/C语言学习笔记（三）/">C语言学习笔记（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/C语言学习笔记（一）/">C语言学习笔记一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/C语言学习笔记（二）/">C 语言学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/ECMAScript学习笔记（一）/">ECMAScript学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/C语言学习笔记（四）/">C语言学习笔记（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/javaScript拾遗(一)-1/">javaScript拾遗（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/javaScript拾遗（二）-1/">javaScript拾遗(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记二/">html学习笔记(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记(三)-1/">html学习笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记一/">html学习笔记(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/the-first-article/">世界，你好！</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

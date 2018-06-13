@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bbs/">bbs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-linux/">unix/linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/菜鸟/">菜鸟</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bbs/">bbs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-linux/">unix/linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/菜鸟/">菜鸟</a></li></ul>
                     </div>
                 </section>
                 
@@ -274,6 +274,76 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-解决mysql乱码问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/13/解决mysql乱码问题/" class="article-date">
+      <time datetime="2018-06-13T02:14:05.000Z" itemprop="datePublished">2018-06-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/13/解决mysql乱码问题/">解决mysql乱码问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>默认情况下，在本地将中文插入mysql的时候,报如下的错误：<br><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.20.34.png" alt="屏幕快照 2018-06-13 上午10.20.34"></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1、进入到mysql的安装目录，找到<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>cd /usr/local/mysql/support-files<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2、将该文件复制到```/etc/```目录下，并命名为：my.cnf,此时该文件是只读模式</span><br></pre></td></tr></table></figure></p>
+<p>cp ./my-default.cnf /etc/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3、修改```my.cnf```文件</span><br></pre></td></tr></table></figure></p>
+<p>sudo chmod 766 my.cnf<br>vim my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加如下信息:</span><br></pre></td></tr></table></figure></p>
+<p>[mysqld]<br> default-storage-engine=INNODB<br> character-set-server=utf8<br> collation-server=utf8_general_ci<br>[client]<br> default-character-set=utf8<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">定位到最后一行，将如下一句话注释掉</span><br><span class="line">![屏幕快照 2018-06-13 上午10.41.33](http://mrclown.cn/屏幕快照 2018-06-13 上午10.41.33.png)</span><br><span class="line">网上的很多教程就是因为没有注释掉这一句话，所以才会导致最后的修改失败</span><br><span class="line"></span><br><span class="line">4、最后将my.cnf文件修改为```只读```模式</span><br></pre></td></tr></table></figure></p>
+<p>sudo chmod 744 my.cnf<br><code>`</code></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>1、登陆mysql,输入status<br><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.22.02.png" alt="屏幕快照 2018-06-13 上午10.22.02"></p>
+<p>2、创建数据库与数据表</p>
+<p><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.49.47.png" alt="屏幕快照 2018-06-13 上午10.49.47"></p>
+<p>成功！！！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-常用Git操作-一" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -537,6 +607,75 @@
 
 
   
+    <article id="post-C语言学习笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/05/06/C语言学习笔记（一）/" class="article-date">
+      <time datetime="2018-05-05T18:15:33.000Z" itemprop="datePublished">2018-05-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/06/C语言学习笔记（一）/">C语言学习笔记一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>1、C语言数据线类型</p>
+<ul>
+<li>基本类型：是算术类型，包括整数类型和浮点数类型</li>
+<li>枚举类型：也属于算数类型，被用来在程序中只能赋予一定的离散整数值的变量</li>
+<li>void类型：类型说明符，表明没有可用的值</li>
+<li>派生类型：指针类型，数组类型，结构类型，共用体类型和函数类型
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2018/05/06/C语言学习笔记（一）/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-C语言学习笔记（二）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -590,75 +729,6 @@
       
         <p class="article-more-link">
           <a href="/2018/05/06/C语言学习笔记（二）/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C语言学习笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/05/06/C语言学习笔记（一）/" class="article-date">
-      <time datetime="2018-05-05T18:15:33.000Z" itemprop="datePublished">2018-05-06</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/06/C语言学习笔记（一）/">C语言学习笔记一）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>1、C语言数据线类型</p>
-<ul>
-<li>基本类型：是算术类型，包括整数类型和浮点数类型</li>
-<li>枚举类型：也属于算数类型，被用来在程序中只能赋予一定的离散整数值的变量</li>
-<li>void类型：类型说明符，表明没有可用的值</li>
-<li>派生类型：指针类型，数组类型，结构类型，共用体类型和函数类型
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/05/06/C语言学习笔记（一）/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -857,75 +927,6 @@
       
         <p class="article-more-link">
           <a href="/2018/05/04/javaScript拾遗(一)-1/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-javaScript拾遗（二）-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/05/04/javaScript拾遗（二）-1/" class="article-date">
-      <time datetime="2018-05-03T18:15:33.000Z" itemprop="datePublished">2018-05-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/04/javaScript拾遗（二）-1/">javaScript拾遗(二)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>1、创建js对象</p>
-<ul>
-<li>创建直接的实例</li>
-<li>通过函数来创建</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function person(firstname, lastname, age, eyecolor) &#123;</span><br><span class="line">    this.firstname=firstname;</span><br><span class="line">    this.lastname=lastname;</span><br><span class="line">    this.age=age;</span><br><span class="line">    this.eyecolor=eyecolor;</span><br><span class="line">    function changeName(name) &#123;</span><br><span class="line">        this.lastname = name;</span><br><span class="line">    &#125;</span><br><span class="line">    this.changeName = changeName;//方法也要在函数中声明和赋值</span><br><span class="line">&#125;//函数体</span><br><span class="line">//创建实例：</span><br><span class="line">var myFather = new person(&quot;Bill&quot;, &quot;Gates&quot;, 56, &quot;blue&quot;);</span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2018/05/04/javaScript拾遗（二）-1/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
