@@ -24,9 +24,10 @@
 <meta property="og:description" content="问题描述：默认情况下，在本地将中文插入mysql的时候,报如下的错误：">
 <meta property="og:locale" content="zh_Hans">
 <meta property="og:image" content="http://mrclown.cn/屏幕快照 2018-06-13 上午10.20.34.png">
+<meta property="og:image" content="http://mrclown.cn/屏幕快照 2018-06-13 上午10.41.33.png">
 <meta property="og:image" content="http://mrclown.cn/屏幕快照 2018-06-13 上午10.22.02.png">
 <meta property="og:image" content="http://mrclown.cn/屏幕快照 2018-06-13 上午10.49.47.png">
-<meta property="og:updated_time" content="2018-06-13T02:52:14.695Z">
+<meta property="og:updated_time" content="2018-06-13T02:57:29.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决mysql乱码问题">
 <meta name="twitter:description" content="问题描述：默认情况下，在本地将中文插入mysql的时候,报如下的错误：">
@@ -314,12 +315,17 @@
       
           
         <h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>默认情况下，在本地将中文插入mysql的时候,报如下的错误：<br><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.20.34.png" alt="屏幕快照 2018-06-13 上午10.20.34"><br><a id="more"></a></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1、进入到mysql的安装目录，找到<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>cd /usr/local/mysql/support-files<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2、将该文件复制到```/etc/```目录下，并命名为：my.cnf,此时该文件是只读模式</span><br></pre></td></tr></table></figure></p>
-<p>cp ./my-default.cnf /etc/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3、修改```my.cnf```文件</span><br></pre></td></tr></table></figure></p>
-<p>sudo chmod 766 my.cnf<br>vim my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">添加如下信息:</span><br></pre></td></tr></table></figure></p>
-<p>[mysqld]<br> default-storage-engine=INNODB<br> character-set-server=utf8<br> collation-server=utf8_general_ci<br>[client]<br> default-character-set=utf8<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">定位到最后一行，将如下一句话注释掉</span><br><span class="line">![屏幕快照 2018-06-13 上午10.41.33](http://mrclown.cn/屏幕快照 2018-06-13 上午10.41.33.png)</span><br><span class="line">网上的很多教程就是因为没有注释掉这一句话，所以才会导致最后的修改失败</span><br><span class="line"></span><br><span class="line">4、最后将my.cnf文件修改为```只读```模式</span><br></pre></td></tr></table></figure></p>
-<p>sudo chmod 744 my.cnf<br><code>`</code></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1、进入到mysql的安装目录，找到my-default.cnf文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/support-files</span><br></pre></td></tr></table></figure>
+<p>2、将该文件复制到<code>/etc/</code>目录下，并命名为：my.cnf,此时该文件是只读模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ./my-default.cnf /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<p>3、修改<code>my.cnf</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 766 my.cnf</span><br><span class="line">vim my.cnf</span><br></pre></td></tr></table></figure>
+<p>添加如下信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"> default-storage-engine=INNODB</span><br><span class="line"> character-set-server=utf8</span><br><span class="line"> collation-server=utf8_general_ci</span><br><span class="line">[client]</span><br><span class="line"> default-character-set=utf8</span><br></pre></td></tr></table></figure>
+<p>定位到最后一行，将如下一句话注释掉<br><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.41.33.png" alt="屏幕快照 2018-06-13 上午10.41.33"><br>网上的很多教程就是因为没有注释掉这一句话，所以才会导致最后的修改失败</p>
+<p>4、最后将my.cnf文件修改为<code>只读</code>模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 744 my.cnf</span><br></pre></td></tr></table></figure>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>1、登陆mysql,输入status<br><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.22.02.png" alt="屏幕快照 2018-06-13 上午10.22.02"></p>
 <p>2、创建数据库与数据表</p>
 <p><img src="http://mrclown.cn/屏幕快照 2018-06-13 上午10.49.47.png" alt="屏幕快照 2018-06-13 上午10.49.47"></p>
@@ -335,7 +341,7 @@
         <p><span>本文标题:</span><a href="/2018/06/13/解决mysql乱码问题/">解决mysql乱码问题</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">健榜</a></p>
         <p><span>发布时间:</span>2018-06-13, 10:14:05</p>
-        <p><span>最后更新:</span>2018-06-13, 10:52:14</p>
+        <p><span>最后更新:</span>2018-06-13, 10:57:29</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/13/解决mysql乱码问题/" title="解决mysql乱码问题">http://yoursite.com/2018/06/13/解决mysql乱码问题/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/06/13/解决mysql乱码问题/　　作者: 健榜" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -433,7 +439,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/解决mysql乱码问题/">解决mysql乱码问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/04/常用Git操作-一/">常用Git操作(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/17/《UNIX环境高级编程》学习笔记：环境配置/">《UNIX环境高级编程》学习笔记：环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/16/2018-05-16/">小程序初体验(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/07/C语言学习笔记（三）/">C语言学习笔记（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/C语言学习笔记（一）/">C语言学习笔记一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/C语言学习笔记（二）/">C 语言学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/ECMAScript学习笔记（一）/">ECMAScript学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/C语言学习笔记（四）/">C语言学习笔记（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/javaScript拾遗(一)-1/">javaScript拾遗（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/javaScript拾遗（二）-1/">javaScript拾遗(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记二/">html学习笔记(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记(三)-1/">html学习笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记一/">html学习笔记(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/the-first-article/">世界，你好！</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/解决mysql乱码问题/">解决mysql乱码问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/04/常用Git操作-一/">常用Git操作(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/17/《UNIX环境高级编程》学习笔记：环境配置/">《UNIX环境高级编程》学习笔记：环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/16/2018-05-16/">小程序初体验(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/07/C语言学习笔记（三）/">C语言学习笔记（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/C语言学习笔记（一）/">C语言学习笔记一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/C语言学习笔记（二）/">C 语言学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/ECMAScript学习笔记（一）/">ECMAScript学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/C语言学习笔记（四）/">C语言学习笔记（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/javaScript拾遗（二）-1/">javaScript拾遗(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/javaScript拾遗(一)-1/">javaScript拾遗（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记二/">html学习笔记(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记(三)-1/">html学习笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记一/">html学习笔记(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/the-first-article/">世界，你好！</a></li></ul>
 
 
 

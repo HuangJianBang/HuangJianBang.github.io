@@ -275,10 +275,10 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-javaScript拾遗（二）-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javaScript拾遗(一)-1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/05/04/javaScript拾遗（二）-1/" class="article-date">
+      <a href="/2018/05/04/javaScript拾遗(一)-1/" class="article-date">
       <time datetime="2018-05-03T18:15:33.000Z" itemprop="datePublished">2018-05-04</time>
 </a>
 
@@ -294,7 +294,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/04/javaScript拾遗（二）-1/">javaScript拾遗(二)</a>
+      <a class="article-title" href="/2018/05/04/javaScript拾遗(一)-1/">javaScript拾遗（一）</a>
     </h1>
   
 
@@ -304,12 +304,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>1、创建js对象</p>
-<ul>
-<li>创建直接的实例</li>
-<li>通过函数来创建</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function person(firstname, lastname, age, eyecolor) &#123;</span><br><span class="line">    this.firstname=firstname;</span><br><span class="line">    this.lastname=lastname;</span><br><span class="line">    this.age=age;</span><br><span class="line">    this.eyecolor=eyecolor;</span><br><span class="line">    function changeName(name) &#123;</span><br><span class="line">        this.lastname = name;</span><br><span class="line">    &#125;</span><br><span class="line">    this.changeName = changeName;//方法也要在函数中声明和赋值</span><br><span class="line">&#125;//函数体</span><br><span class="line">//创建实例：</span><br><span class="line">var myFather = new person(&quot;Bill&quot;, &quot;Gates&quot;, 56, &quot;blue&quot;);</span><br></pre></td></tr></table></figure>
+              <p>1、变量<br>    声明但是没有赋值的变量为：undefined</p>
+<p>2、js的数据类型有：<br>    字符串、数字、布尔、数组、对象、Null、Undefined<br>
           
       
     </div>
@@ -325,7 +321,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2018/05/04/javaScript拾遗（二）-1/#more">more >></a>
+          <a href="/2018/05/04/javaScript拾遗(一)-1/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
