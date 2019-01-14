@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://mrclown.cn/15264822189377.jpg">
 <meta property="og:image" content="http://mrclown.cn/15264823540783.jpg">
 <meta property="og:image" content="http://mrclown.cn/15264831112298.jpg">
-<meta property="og:updated_time" content="2018-05-16T15:57:13.649Z">
+<meta property="og:updated_time" content="2019-01-14T02:37:13.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序初体验(一)">
 <meta name="twitter:description" content="今年参加了“互联网+”的比赛，我们的产品是一款微信小程序，作为小组里唯一的一名“技术人员”，“开发小程序”的任务义不容辞。 此前我并没有接触写过一行关于小程序的代码，仅有一点html、css、js基础。而我接到的任务是要在三天之内做出一款“演示”作用的小程序，我们是创意组，并不需要成品，当然有成品那肯定是锦上添花的啦。 查看官方的简易教程一、申请开发者ID—&amp;gt;下载开发IDE开发者ID是自动生">
@@ -200,7 +200,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bbs/">bbs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-linux/">unix/linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/菜鸟/">菜鸟</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bbs/">bbs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unix-linux/">unix/linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li></ul>
                     </div>
                 </section>
                 
@@ -330,7 +330,7 @@
 <p>三、文件中的内容<br>app.js:每次重新启动项目都会执行一遍app.js文件中的逻辑代码，Demo中的代码解释得很清楚，这里就不解释了。<br>app.json:<br><img src="http://mrclown.cn/15264831112298.jpg" alt=""><br>很重要，每增加一个界面都要在这个文件里面进行配置，Demo中有两个界面，index和logs。window则是在配置整个项目的页面中一些公共界面。<br>app.wxml,app.wxss则表示每个页面中的一些公共页面模块和样式，可以在每个页面中进行覆盖这些设置。</p>
 <p>注意！！！<br>在每个界面中，.js和.wxml文件是必须的！</p>
 <p>四、一个页面的执行过程<br>在每个页面文件中对对应的.js文件中，敲下“page”再回车，既可以生成页面在程序中运行时各个状态下对应的函数<br>Data: {}这个模块中存储的是这个界面对应的数据，所有需要传到.wxml文件中的变量，都需要在这个模块中进行声明。<br>onLoad: function(){}//页面加载时初始化工作<br>onReady: function(){}//页面触发后执行的操作<br>onHide: function(){}//页面隐藏时候触发的操作<br>另外还有一些会帮我们自动生成的一些函数，比如处理下拉时刷新的函数等等。<br>另外，我们还可以在这个文件中编写处理各种事件（逻辑）的函数，只需要事先在.wxml文件对应的元素中绑定好。<br>在这个文件中常用到：this.setData（）这个函数，直接对属性进行赋值时禁止的。</p>
-<p>五、同是界面的开发，微信小程序并没有提供类似html那样种类繁多的标签，而是提供了一些组件，是一些已经封装了很多功能的框架组件<br>1、视图容器：<br>    —- view: 常用组件，相当于html中的<div>标签<br>    —- sroll-view可以滚动的视图区域组件<br>2、基础内容组件：<br>    —- icon:展示视图界面图标<br>    —- text：展示文本内容<br>    —- progress:信息进度条<br>3、表单组件：<br>    —- button<br>    —- form<br>    —- input<br>    —- checkbox<br>    —- radio<br>    —- picker<br>    —- picker-view<br>4、互动操作组件：<br>    —- action-sheet:从手机底部弹出的可以供用户选择的选项栏<br>    —- modal:弹出对话框和用户交互<br>    —- toast:弹出提示框，仅起到提示的作用。<br>5、页面导航组件<br>    —- navigator:类似于html中<code>&lt;a&gt;</code>标签，但是微信提供了几个常用的页面间跳转的API<br>    wx.navigateTo(OBJECT):保留当前页面。跳转到应用内的某个界面<br>    wx.redirectTo(OBJECT):关闭当前的页面，跳转到应用内的某个界面<br>    wx.navigateBack()关闭当前页面，回退至前一页面<br>5、媒体组件，这个就和html中提供的媒体组件很相似了<br>    —- image<br>    —- audio<br>    —- video<br>    —- map<br>    —- canvas</div></p>
+<p>五、同是界面的开发，微信小程序并没有提供类似html那样种类繁多的标签，而是提供了一些组件，是一些已经封装了很多功能的框架组件<br>1、视图容器：<br>    —- view: 常用组件，相当于html中的<div>标签<br>    —- sroll-view可以滚动的视图区域组件<br>2、基础内容组件：<br>    —- icon:展示视图界面图标<br>    —- text：展示文本内容<br>    —- progress:信息进度条<br>3、表单组件：<br>    —- button<br>    —- form<br>    —- input<br>    —- checkbox<br>    —- radio<br>    —- picker<br>    —- picker-view<br>4、互动操作组件：<br>    —- action-sheet:从手机底部弹出的可以供用户选择的选项栏<br>    —- modal:弹出对话框和用户交互<br>    —- toast:弹出提示框，仅起到提示的作用。<br>5、页面导航组件<br>    —- navigator:类似于html中<code>&lt;a&gt;</code>标签，但是微信提供了几个常用的页面间跳转的API<br>    wx.navigateTo(OBJECT):保留当前页面。跳转到应用内的某个界面<br>    wx.redirectTo(OBJECT):关闭当前的页面，跳转到应用内的某个界面<br>    wx.navigateBa__ck()关闭当前页面，回退至前一页面<br>5、媒体组件，这个就和html中提供的媒体组件很相似了<br>    —- image<br>    —- audio<br>    —- video<br>    —- map<br>    —- canvas</div></p>
 
       
     </div>
@@ -342,7 +342,7 @@
         <p><span>本文标题:</span><a href="/2018/05/16/2018-05-16/">小程序初体验(一)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">健榜</a></p>
         <p><span>发布时间:</span>2018-05-16, 02:15:33</p>
-        <p><span>最后更新:</span>2018-05-16, 23:57:13</p>
+        <p><span>最后更新:</span>2019-01-14, 10:37:13</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/05/16/2018-05-16/" title="小程序初体验(一)">http://yoursite.com/2018/05/16/2018-05-16/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/05/16/2018-05-16/　　作者: 健榜" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -363,12 +363,6 @@
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/05/07/C语言学习笔记（三）/">
-                    C语言学习笔记（三）
-                </a>
-            </div>
         
     </nav>
 
@@ -442,13 +436,11 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/05/07/C语言学习笔记（三）/" title="下一篇: C语言学习笔记（三）">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/解决mysql乱码问题/">解决mysql乱码问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/04/常用Git操作-一/">常用Git操作(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/17/《UNIX环境高级编程》学习笔记：环境配置/">《UNIX环境高级编程》学习笔记：环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/16/2018-05-16/">小程序初体验(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/07/C语言学习笔记（三）/">C语言学习笔记（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/C语言学习笔记（一）/">C语言学习笔记一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/06/C语言学习笔记（二）/">C 语言学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/ECMAScript学习笔记（一）/">ECMAScript学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/C语言学习笔记（四）/">C语言学习笔记（四）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/javaScript拾遗（二）-1/">javaScript拾遗(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/javaScript拾遗(一)-1/">javaScript拾遗（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记二/">html学习笔记(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记(三)-1/">html学习笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/html学习笔记一/">html学习笔记(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/the-first-article/">世界，你好！</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/14/ID3算法实现/">ID3算法实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/解决mysql乱码问题/">解决mysql乱码问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/04/常用Git操作-一/">常用Git操作(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/17/《UNIX环境高级编程》学习笔记：环境配置/">《UNIX环境高级编程》学习笔记：环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/16/2018-05-16/">小程序初体验(一)</a></li></ul>
 
 
 
@@ -462,7 +454,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2018 健榜
+                2018-2019 健榜
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
